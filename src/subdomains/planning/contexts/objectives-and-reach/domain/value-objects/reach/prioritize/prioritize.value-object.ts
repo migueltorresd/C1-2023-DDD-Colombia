@@ -1,6 +1,6 @@
-import { StringValueobjectBase } from 'src/shared/sofka/value-objects/string.value-objects';
+import { StringValueobjectBase } from 'src/shared/domain/value-objects/string.value-objects';
 
-export class Prioritize extends StringValueobjectBase {
+export class PrioritizeValueObject extends StringValueobjectBase {
   constructor(value: string) {
     super(value);
   }

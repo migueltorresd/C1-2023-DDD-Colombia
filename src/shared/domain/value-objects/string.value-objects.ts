@@ -1,8 +1,8 @@
 import { IsEmpty } from 'src/shared/validations/is-empty.validation';
 import { StringMaxLength } from 'src/shared/validations/string-max-length.validation';
 import { StringMinLength } from 'src/shared/validations/string-min-length.validation';
-import { ValueObjectBase } from '../bases';
-import { IErrorValueObject } from '../interface';
+import { ValueObjectBase } from 'src/shared/sofka/bases/object-value.base';
+import { IErrorValueObject } from 'src/shared/sofka/interface/error-object-value.interface';
 
 export abstract class StringValueobjectBase extends ValueObjectBase<string> {
   constructor(value: string) {

@@ -1,6 +1,6 @@
-import { StringValueobjectBase } from 'src/shared/sofka/value-objects/string.value-objects';
+import { StringValueobjectBase } from 'src/shared/domain/value-objects/string.value-objects';
 
-export class Description extends StringValueobjectBase {
+export class DescriptionObjectValue extends StringValueobjectBase {
   constructor(value: string) {
     super(value);
   }

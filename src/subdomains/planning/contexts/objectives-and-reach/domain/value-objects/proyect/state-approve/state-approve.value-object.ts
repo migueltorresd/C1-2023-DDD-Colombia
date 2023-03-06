@@ -1,6 +1,6 @@
-import { StateValueobjectBase } from 'src/shared/sofka/value-objects/state.value-objects';
+import { StateValueobjectBase } from 'src/shared/domain/value-objects/state.value-objects';
 
-export class StateApprove extends StateValueobjectBase {
+export class StateApproveObjectValue extends StateValueobjectBase {
   constructor(value: boolean) {
     super(value);
   }

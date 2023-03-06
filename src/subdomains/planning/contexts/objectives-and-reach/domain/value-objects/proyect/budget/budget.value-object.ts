@@ -1,7 +1,7 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { isPositiveNumber } from 'src/shared/validations/is-positive-number.validation';
 
-export class Budget extends ValueObjectBase<number> {
+export class BudgetObjectValue extends ValueObjectBase<number> {
   validateData(): void {
     this.isPositiveNumber();
   }

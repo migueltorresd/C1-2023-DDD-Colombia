@@ -4,7 +4,7 @@
  * @param {Date} value
  * @return {*}  {boolean}
  */
-export const DateAboveCurrent = (value: Date): boolean => {
+export const DateAboveCurrentEnd = (value: Date): boolean => {
   const currentDate = new Date(Date.now());
   currentDate.setDate(currentDate.getDate() + 1); // Suma un día a la fecha actual
   if (currentDate <= value) {
