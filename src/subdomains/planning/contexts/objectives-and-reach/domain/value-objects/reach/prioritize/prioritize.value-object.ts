@@ -8,6 +8,9 @@ import { StringValueobjectBase } from 'src/shared/domain/value-objects/string.va
  * @extends {StringValueobjectBase}
  */
 export class PrioritizeValueObject extends StringValueobjectBase {
+  field() {
+    return 'prioritize';
+  }
   constructor(value: string) {
     super(value);
   }

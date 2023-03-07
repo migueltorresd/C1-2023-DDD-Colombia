@@ -8,6 +8,9 @@ import { UUIDValueObjectBase } from 'src/shared/domain/value-objects/uuid.value-
  * @extends {UUIDValueObjectBase}
  */
 export class ReachIdValueObject extends UUIDValueObjectBase {
+  field(): string {
+    return 'id del alcance';
+  }
   constructor(value: string) {
     super(value);
   }

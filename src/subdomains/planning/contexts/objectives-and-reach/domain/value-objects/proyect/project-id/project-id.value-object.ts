@@ -8,6 +8,9 @@ import { UUIDValueObjectBase } from 'src/shared/domain/value-objects/uuid.value-
  * @extends {UUIDValueObjectBase}
  */
 export class ProjectIdValueObject extends UUIDValueObjectBase {
+  field(): string {
+    return 'id del proyecto';
+  }
   constructor(value: string) {
     super(value);
   }

@@ -35,6 +35,6 @@ export class DefinitionOfTheProjectDomainEntity
     if (data?.dateEnd) this.dateEnd = data.dateEnd;
     if (data?.dateStart) this.dateStart = data.dateStart;
   }
-  reachs: IReachDomainEntity;
-  projects: IProjectDomainEntity;
+  reachs: IReachDomainEntity[];
+  projects: IProjectDomainEntity[];
 }

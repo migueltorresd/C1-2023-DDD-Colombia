@@ -8,7 +8,13 @@ import { StateValueobjectBase } from 'src/shared/domain/value-objects/state.valu
  * @extends {StateValueobjectBase}
  */
 export class StateApproveObjectValue extends StateValueobjectBase {
+  field(): string {
+    return 'estado de la aprobacion';
+  }
   constructor(value: boolean) {
     super(value);
   }
 }
+
+const definition = new StateApproveObjectValue(false);
+console.log(definition);

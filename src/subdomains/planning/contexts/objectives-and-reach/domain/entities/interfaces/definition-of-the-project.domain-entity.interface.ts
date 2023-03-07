@@ -18,6 +18,6 @@ export interface IDefinitionOfTheProjectDomainEntityInterface {
   stateApprove: boolean | StateApproveObjectValue;
   dateEnd: Date | DateEndObjectValue;
   dateStart: Date | DateStartObjectValue;
-  reachs: IReachDomainEntity;
-  projects: IProjectDomainEntity;
+  reachs: IReachDomainEntity[];
+  projects: IProjectDomainEntity[];
 }

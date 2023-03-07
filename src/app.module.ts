@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatosController } from './subdomains/__SUBDOMINIO__/contexts/__CONTEXTO__1__/infrastructure/datos.controller';
-import { GuardarService } from './subdomains/__SUBDOMINIO__/contexts/__CONTEXTO__1__/infrastructure/guardar.service';
+import { DefinitionProjectIdValueObject } from './subdomains/planning/contexts/objectives-and-reach/domain/value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
+import { DefinitionValueObject } from './subdomains/planning/contexts/objectives-and-reach/domain/value-objects/reach/definition/definition.value-object';
 
 @Module({
   imports: [],
-  controllers: [DatosController],
-  providers: [GuardarService],
+  controllers: [],
+  providers: [DefinitionValueObject, DefinitionProjectIdValueObject],
 })
 export class AppModule {}

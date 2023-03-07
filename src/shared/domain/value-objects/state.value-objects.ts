@@ -1,23 +1,24 @@
+import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { IsEmpty } from 'src/shared/validations/is-empty.validation';
 import { IsState } from 'src/shared/validations/is-state.validation';
-import { ValueObjectBase } from 'src/shared/sofka/bases/object-value.base';
-import { IErrorValueObject } from 'src/shared/sofka/interface/error-object-value.interface';
 
 export abstract class StateValueobjectBase extends ValueObjectBase<boolean> {
+  abstract field(): string;
   constructor(value: boolean) {
     super(value);
   }
 
   validateData(): void {
-    this.isEmpty();
-    this.isState();
+    if (this.value) {
+      this.isEmpty();
+      this.isState();
+    }
   }
-
   private isEmpty(): void {
     if (IsEmpty(this.value)) {
       this.setError({
-        field: 'name',
-        message: 'esta casilla no puede estar vacia',
+        field: this.field(),
+        message: `esta casilla ${this.field()} no puede estar vacia`,
       } as IErrorValueObject);
     }
   }
@@ -25,8 +26,8 @@ export abstract class StateValueobjectBase extends ValueObjectBase<boolean> {
   private isState(): void {
     if (IsState(this.value)) {
       this.setError({
-        field: 'name',
-        message: 'esta casilla no puede estar vacia',
+        field: this.field(),
+        message: `el estado ${this.field()} no es valido`,
       } as IErrorValueObject);
     }
   }

@@ -8,6 +8,9 @@ import { StringValueobjectBase } from 'src/shared/domain/value-objects/string.va
  * @extends {StringValueobjectBase}
  */
 export class NameObjectValue extends StringValueobjectBase {
+  field() {
+    return 'name';
+  }
   constructor(value: string) {
     super(value);
   }
