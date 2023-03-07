@@ -4,6 +4,12 @@ import { ProjectIdValueObject } from '../../value-objects/proyect/project-id/pro
 import { StateApproveObjectValue } from '../../value-objects/proyect/state-approve/state-approve.value-object';
 import { IDefinitionOfTheProjectDomainEntityInterface } from './definition-of-the-project.domain-entity.interface';
 
+/**
+ * Interfaz que representa la entidad de dominio de proyecto
+ *
+ * @export
+ * @interface IProjectDomainEntity
+ */
 export interface IProjectDomainEntity {
   projectId: string | ProjectIdValueObject;
   name: string | NameObjectValue;

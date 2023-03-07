@@ -6,6 +6,12 @@ import { StateApproveObjectValue } from '../../value-objects/proyect/state-appro
 import { IProjectDomainEntity } from './project.domain-entity.interface';
 import { IReachDomainEntity } from './reach.domain-entity.interface';
 
+/**
+ * Interfaz que representa la entidad de dominio de definición del proyecto
+ *
+ * @export
+ * @interface IDefinitionOfTheProjectDomainEntityInterface
+ */
 export interface IDefinitionOfTheProjectDomainEntityInterface {
   definitionId: string | DefinitionProjectIdValueObject;
   description: string | DescriptionObjectValue;

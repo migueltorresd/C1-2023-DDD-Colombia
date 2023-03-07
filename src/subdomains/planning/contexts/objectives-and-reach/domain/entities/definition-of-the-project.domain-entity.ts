@@ -7,6 +7,13 @@ import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/defin
 import { IProjectDomainEntity } from './interfaces/project.domain-entity.interface';
 import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
 
+/**
+ * Esta clase que representa la entidad de dominio de definición del proyecto para esto implementa la Interface correspondiente
+ *
+ * @export
+ * @class DefinitionOfTheProjectDomainEntity
+ * @implements {IDefinitionOfTheProjectDomainEntityInterface}
+ */
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainEntityInterface
 {
@@ -16,6 +23,11 @@ export class DefinitionOfTheProjectDomainEntity
   dateEnd: Date | DateEndObjectValue;
   dateStart: Date | DateStartObjectValue;
 
+  /**
+   * crea una instancia de la clase DefinitionOfTheProjectDomainEntity.
+   * @param {IDefinitionOfTheProjectDomainEntityInterface} [data]
+   * @memberof DefinitionOfTheProjectDomainEntity
+   */
   constructor(data?: IDefinitionOfTheProjectDomainEntityInterface) {
     if (data?.definitionId) this.definitionId = data.definitionId;
     if (data?.description) this.description = data.description;
