@@ -2,6 +2,7 @@ import { BudgetObjectValue } from '../value-objects/proyect/budget/budget.value-
 import { NameObjectValue } from '../value-objects/proyect/name/name.value-object';
 import { ProjectIdValueObject } from '../value-objects/proyect/project-id/project-id.value-object';
 import { StateApproveObjectValue } from '../value-objects/proyect/state-approve/state-approve.value-object';
+import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
 import { IProjectDomainEntity } from './interfaces/project.domain-entity.interface';
 
 export class ProjectDomainEntity implements IProjectDomainEntity {
@@ -16,4 +17,5 @@ export class ProjectDomainEntity implements IProjectDomainEntity {
     if (data?.budget) this.budget = data.budget;
     if (data?.StateApprove) this.StateApprove = data.StateApprove;
   }
+  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
 }

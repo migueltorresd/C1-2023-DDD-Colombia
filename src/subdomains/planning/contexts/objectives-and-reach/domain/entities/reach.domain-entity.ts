@@ -1,7 +1,8 @@
-import { DefinitionIdValueObject } from '../value-objects/reach/definition-id/definition-id.value-object';
+import { DefinitionIdValueObject } from '../value-objects/reach/reach-id/definition-id.value-object';
 import { DefinitionValueObject } from '../value-objects/reach/definition/definition.value-object';
 import { PrioritizeValueObject } from '../value-objects/reach/prioritize/prioritize.value-object';
 import { StateDefinitionValueObject } from '../value-objects/reach/state-definition/state-definition.value-object';
+import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
 import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
 
 export class ReachDomainEntity implements IReachDomainEntity {
@@ -16,4 +17,5 @@ export class ReachDomainEntity implements IReachDomainEntity {
     if (data?.prioritize) this.prioritize = data.prioritize;
     if (data?.stateDefinition) this.stateDefinition = data.stateDefinition;
   }
+  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
 }

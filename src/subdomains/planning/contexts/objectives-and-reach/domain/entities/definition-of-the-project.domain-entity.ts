@@ -4,6 +4,8 @@ import { DefinitionProjectIdValueObject } from '../value-objects/Definition-the-
 import { DescriptionObjectValue } from '../value-objects/Definition-the-project/description/description.value-object';
 import { StateApproveObjectValue } from '../value-objects/proyect/state-approve/state-approve.value-object';
 import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
+import { IProjectDomainEntity } from './interfaces/project.domain-entity.interface';
+import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
 
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainEntityInterface
@@ -21,4 +23,6 @@ export class DefinitionOfTheProjectDomainEntity
     if (data?.dateEnd) this.dateEnd = data.dateEnd;
     if (data?.dateStart) this.dateStart = data.dateStart;
   }
+  reachs: IReachDomainEntity;
+  projects: IProjectDomainEntity;
 }

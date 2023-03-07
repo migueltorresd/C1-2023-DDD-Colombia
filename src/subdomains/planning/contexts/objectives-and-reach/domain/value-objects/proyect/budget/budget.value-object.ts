@@ -1,6 +1,13 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { isPositiveNumber } from 'src/shared/validations/is-positive-number.validation';
 
+/**
+ * Esta clase valida si es un valor de tipo number y si es positivo
+ *
+ * @export
+ * @class BudgetObjectValue
+ * @extends {ValueObjectBase<number>}
+ */
 export class BudgetObjectValue extends ValueObjectBase<number> {
   validateData(): void {
     this.isPositiveNumber();
