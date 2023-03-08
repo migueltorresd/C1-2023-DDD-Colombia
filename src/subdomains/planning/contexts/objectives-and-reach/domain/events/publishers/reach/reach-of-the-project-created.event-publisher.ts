@@ -1,0 +1,13 @@
+import { EventPublisherBase } from 'src/shared/sofka/bases/event-publisher.base';
+import { ReachDomainEntity } from '../../../entities/reach.domain-entity';
+
+export abstract class ReachOfTheProjectCreatedEventPublisher<
+  Response = ReachDomainEntity,
+> extends EventPublisherBase<Response> {
+  publish<Result = any>(): Promise<Result> {
+    return this.emit(
+      'planning.ReachOfTheProjectCreatedEventPublisher',
+      JSON.stringify(this.response),
+    );
+  }
+}

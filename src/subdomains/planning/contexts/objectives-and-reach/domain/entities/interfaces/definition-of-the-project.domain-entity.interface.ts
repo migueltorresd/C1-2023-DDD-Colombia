@@ -13,11 +13,11 @@ import { IReachDomainEntity } from './reach.domain-entity.interface';
  * @interface IDefinitionOfTheProjectDomainEntityInterface
  */
 export interface IDefinitionOfTheProjectDomainEntityInterface {
-  definitionId: string | DefinitionProjectIdValueObject;
-  description: string | DescriptionObjectValue;
-  stateApprove: boolean | StateApproveObjectValue;
-  dateEnd: Date | DateEndObjectValue;
-  dateStart: Date | DateStartObjectValue;
-  reachs: IReachDomainEntity[];
-  projects: IProjectDomainEntity[];
+  definitionId?: string | DefinitionProjectIdValueObject;
+  description?: string | DescriptionObjectValue;
+  stateApprove?: boolean | StateApproveObjectValue;
+  dateEnd?: Date | DateEndObjectValue;
+  dateStart?: Date | DateStartObjectValue;
+  reachs?: IReachDomainEntity[];
+  projects?: IProjectDomainEntity[];
 }

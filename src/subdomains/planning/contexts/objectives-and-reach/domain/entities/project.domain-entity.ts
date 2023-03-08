@@ -13,11 +13,11 @@ import { IProjectDomainEntity } from './interfaces/project.domain-entity.interfa
  * @implements {IProjectDomainEntity}
  */
 export class ProjectDomainEntity implements IProjectDomainEntity {
-  projectId: string | ProjectIdValueObject;
-  name: string | NameObjectValue;
-  budget: number | BudgetObjectValue;
-  StateApprove: boolean | StateApproveObjectValue;
-
+  projectId?: string | ProjectIdValueObject;
+  name?: string | NameObjectValue;
+  budget?: number | BudgetObjectValue;
+  StateApprove?: boolean | StateApproveObjectValue;
+  definitionOfTheProject?: IDefinitionOfTheProjectDomainEntityInterface;
   /**
    * se crea una instancia de ProjectDomainEntity.
    * @param {IProjectDomainEntity} [data]
@@ -29,5 +29,4 @@ export class ProjectDomainEntity implements IProjectDomainEntity {
     if (data?.budget) this.budget = data.budget;
     if (data?.StateApprove) this.StateApprove = data.StateApprove;
   }
-  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
 }

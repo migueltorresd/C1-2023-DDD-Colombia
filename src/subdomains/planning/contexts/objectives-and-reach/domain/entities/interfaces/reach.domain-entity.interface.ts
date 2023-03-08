@@ -15,5 +15,5 @@ export interface IReachDomainEntity {
   definition?: string | DefinitionValueObject;
   prioritize?: string | PrioritizeValueObject;
   stateDefinition?: string | StateDefinitionValueObject;
-  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
+  definitionOfTheProject?: IDefinitionOfTheProjectDomainEntityInterface;
 }

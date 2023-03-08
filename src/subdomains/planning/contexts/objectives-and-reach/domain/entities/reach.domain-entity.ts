@@ -17,7 +17,7 @@ export class ReachDomainEntity implements IReachDomainEntity {
   definition?: string | DefinitionValueObject;
   prioritize?: string | PrioritizeValueObject;
   stateDefinition?: string | StateDefinitionValueObject;
-
+  definitionOfTheProject?: IDefinitionOfTheProjectDomainEntityInterface;
   /**
    * se crea la instancia de ReachDomainEntity.
    * @param {IReachDomainEntity} [data]
@@ -29,5 +29,4 @@ export class ReachDomainEntity implements IReachDomainEntity {
     if (data?.prioritize) this.prioritize = data.prioritize;
     if (data?.stateDefinition) this.stateDefinition = data.stateDefinition;
   }
-  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
 }

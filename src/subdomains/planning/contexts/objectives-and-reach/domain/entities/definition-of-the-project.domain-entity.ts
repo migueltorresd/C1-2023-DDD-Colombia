@@ -6,6 +6,8 @@ import { StateApproveObjectValue } from '../value-objects/proyect/state-approve/
 import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
 import { IProjectDomainEntity } from './interfaces/project.domain-entity.interface';
 import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
+import { ProjectDomainEntity } from './project.domain-entity';
+import { ReachDomainEntity } from './reach.domain-entity';
 
 /**
  * Esta clase que representa la entidad de dominio de definición del proyecto para esto implementa la Interface correspondiente
@@ -17,11 +19,13 @@ import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainEntityInterface
 {
-  definitionId: string | DefinitionProjectIdValueObject;
-  description: string | DescriptionObjectValue;
-  stateApprove: boolean | StateApproveObjectValue;
-  dateEnd: Date | DateEndObjectValue;
-  dateStart: Date | DateStartObjectValue;
+  definitionId?: string | DefinitionProjectIdValueObject;
+  description?: string | DescriptionObjectValue;
+  stateApprove?: boolean | StateApproveObjectValue;
+  dateEnd?: Date | DateEndObjectValue;
+  dateStart?: Date | DateStartObjectValue;
+  reachs?: ReachDomainEntity[];
+  projects?: ProjectDomainEntity[];
 
   /**
    * crea una instancia de la clase DefinitionOfTheProjectDomainEntity.
@@ -35,6 +39,4 @@ export class DefinitionOfTheProjectDomainEntity
     if (data?.dateEnd) this.dateEnd = data.dateEnd;
     if (data?.dateStart) this.dateStart = data.dateStart;
   }
-  reachs: IReachDomainEntity[];
-  projects: IProjectDomainEntity[];
 }

@@ -11,9 +11,9 @@ import { IDefinitionOfTheProjectDomainEntityInterface } from './definition-of-th
  * @interface IProjectDomainEntity
  */
 export interface IProjectDomainEntity {
-  projectId: string | ProjectIdValueObject;
-  name: string | NameObjectValue;
-  budget: number | BudgetObjectValue;
-  StateApprove: boolean | StateApproveObjectValue;
-  definitionOfTheProject: IDefinitionOfTheProjectDomainEntityInterface;
+  projectId?: string | ProjectIdValueObject;
+  name?: string | NameObjectValue;
+  budget?: number | BudgetObjectValue;
+  StateApprove?: boolean | StateApproveObjectValue;
+  definitionOfTheProject?: IDefinitionOfTheProjectDomainEntityInterface;
 }
