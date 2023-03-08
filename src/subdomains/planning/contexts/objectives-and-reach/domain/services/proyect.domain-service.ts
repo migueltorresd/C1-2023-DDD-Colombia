@@ -7,7 +7,9 @@ import { ProjectDomainEntity } from '../entities/project.domain-entity';
  * @interface IProyectDomainService
  * @template Entity
  */
-export interface IProyectDomainService<Entity extends ProjectDomainEntity> {
+export interface IProjectDomainService<
+  Entity extends ProjectDomainEntity = ProjectDomainEntity,
+> {
   /**
    * Crea un proyecto
    *

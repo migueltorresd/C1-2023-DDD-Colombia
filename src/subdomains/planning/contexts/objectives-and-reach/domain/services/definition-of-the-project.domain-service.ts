@@ -8,7 +8,7 @@ import { DefinitionOfTheProjectDomainEntity } from '../entities/definition-of-th
  * @template Entity
  */
 export interface IDefinitionOfTheProjectDomainService<
-  Entity extends DefinitionOfTheProjectDomainEntity,
+  Entity extends DefinitionOfTheProjectDomainEntity = DefinitionOfTheProjectDomainEntity,
 > {
   /**
    * Crea una descripción del proyecto
