@@ -18,9 +18,6 @@ import { ReachDomainEntity } from './reach.domain-entity';
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainInterface
 {
-  registerDefinitionProject(definitionId: string, description: string, stateApprove: boolean, dateStart: string, dateEnd: string): DefinitionOfTheProjectDomainEntity | DefinitionOfTheProjectDomainEntity[] | PromiseLike<DefinitionOfTheProjectDomainEntity | DefinitionOfTheProjectDomainEntity[] | null> | null {
-      throw new Error("Method not implemented.");
-  }
   definitionId?: string | DefinitionProjectIdValueObject;
   description?: string | DescriptionObjectValue;
   stateApprove?: boolean | StateApproveObjectValue;

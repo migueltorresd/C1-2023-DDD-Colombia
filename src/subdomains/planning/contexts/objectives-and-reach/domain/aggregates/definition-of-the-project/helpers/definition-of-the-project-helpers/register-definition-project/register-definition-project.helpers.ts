@@ -3,23 +3,23 @@ import { RegistedDefinitionOfTheProjectEventPublisher } from "../../../../../eve
 import { IDefinitionOfTheProjectDomainService } from "../../../../../services/definition-of-the-project.domain-service";
 
 /**
- *
+ * Esta función es un helper que permite registrar una definición del proyecto
  *
  * @param {'string'} definitionId
  * @param {'string'} description
  * @param {true} stateApprove
- * @param {'string'} dateStart
- * @param {'string'} dateEnd
+ * @param {'Date'} dateStart
+ * @param {'Date'} dateEnd
  * @param {RegistedDefinitionOfTheProjectEventPublisher} event
  * @param {DefinitionOfTheProjectDomainEntity} service
  * @return {Promise<DefinitionOfTheProjectDomainEntity>}
  */
 export const RegisterDefinitionProjectHelpers = async (
-   definitionId: 'string',
-   description: 'string',
-   stateApprove: true,
-   dateStart: 'string',
-   dateEnd: 'string',
+   definitionId: string,
+   description: string,
+   stateApprove: boolean,
+   dateStart: Date,
+   dateEnd: Date,
    event: RegistedDefinitionOfTheProjectEventPublisher,
    service: IDefinitionOfTheProjectDomainService,
    ): Promise<DefinitionOfTheProjectDomainEntity> => {

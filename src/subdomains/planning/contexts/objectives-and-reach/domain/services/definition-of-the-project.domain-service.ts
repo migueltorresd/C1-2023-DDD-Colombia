@@ -15,7 +15,7 @@ export interface IDefinitionOfTheProjectDomainService<
    *
    * @param {string} definitionId
    * @param {string} description
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
   createDescripcionProject(
@@ -38,7 +38,7 @@ export interface IDefinitionOfTheProjectDomainService<
    * edita el estado de aprobación del proyecto
    *
    * @param {string} definitionId
-   * @param {string} stateApprove
+   * @param {boolean} stateApprove
    * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
@@ -51,27 +51,27 @@ export interface IDefinitionOfTheProjectDomainService<
    * Agrega una fecha de inicio del proyecto
    *
    * @param {string} definitionId
-   * @param {string} dateEnd
+   * @param {date} dateEnd
    * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
-  addDateEnd(definitionId: string, dateEnd: string): Promise<Entity>;
+  addDateEnd(definitionId: string, dateEnd: Date): Promise<Entity>;
 
   /**
    * Edita una fecha de inicio del proyecto
    *
    * @param {string} definitionId
-   * @param {string} dateEnd
-   * @return {*}  {Promise<Entity>}
+   * @param {date} dateEnd
+   * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
-  editDateEnd(definitionId: string, dateEnd: string): Promise<Entity>;
+  editDateEnd(definitionId: string, dateEnd: Date): Promise<Entity>;
   /**
    * registra una definicion del proyecto
    *
    * @param {string} definitionId
    * @param {string} description
-   * @param {string} stateApprove
+   * @param {boolean} stateApprove
    * @param {Date} dateStart
    * @param {Date} dateEnd
    * @return {Promise<Entity>}
@@ -80,7 +80,7 @@ export interface IDefinitionOfTheProjectDomainService<
   registerDefinitionProject(
     definitionId: string,
     description: string,
-    stateApprove: string,
+    stateApprove: boolean,
     dateStart: Date,
     dateEnd: Date,
   ): Promise<Entity>;

@@ -6,14 +6,14 @@ import { IDefinitionOfTheProjectDomainService } from '../../../../../services/de
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
  * @param {string} definitionId
- * @param {string} dateEnd
+ * @param {Date} dateEnd
  * @param {AddedEndDateEventPublisher} event
  * @param {IDefinitionOfTheProjectDomainService} [service]
  * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
  */
 export const AddDateEndHelper = async (
   definitionId: string,
-  dateEnd: string,
+  dateEnd: Date,
   event: AddedEndDateEventPublisher,
   service?: IDefinitionOfTheProjectDomainService,
 ): Promise<DefinitionOfTheProjectDomainEntity> => {

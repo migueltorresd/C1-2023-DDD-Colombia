@@ -65,10 +65,17 @@ export class DefinitionOfTheProjectAggregate
   private readonly registedDefinitionOfTheProjectEventPublisher: RegistedDefinitionOfTheProjectEventPublisher;
   private readonly stateApproveEditedEventPublisher: StateApproveEditedEventPublisher;
 
-  //   constructor({ reachService, reachOfTheProjectCreatedEventPublisher }: { reachService: IReachDomainService; reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher; }) {
-  //     this.reachService = reachService;
-  //     this.reachOfTheProjectCreatedEventPublisher = reachOfTheProjectCreatedEventPublisher;
-  //   }
+  // constructor({
+  //   reachService,
+  //   reachOfTheProjectCreatedEventPublisher,
+  // }: {
+  //   reachService: IReachDomainService;
+  //   reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher;
+  // }) {
+  //   this.reachService = reachService;
+  //   this.reachOfTheProjectCreatedEventPublisher =
+  //     reachOfTheProjectCreatedEventPublisher;
+  // }
 
   // reach ----------------------------------------
   /**
@@ -324,12 +331,12 @@ export class DefinitionOfTheProjectAggregate
    */
   addDateEnd(
     definitionId: string,
-    dateEnd: string,
+    dateEnd: Date,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
     return AddDateEndHelper(
       definitionId,
       dateEnd,
-      this.dateEndEditedEventPublisher,
+      this.addedEndDateEventPublisher,
       this.definitionoftheprojectService,
     );
   }
@@ -343,7 +350,7 @@ export class DefinitionOfTheProjectAggregate
    */
   editDateEnd(
     definitionId: string,
-    dateEnd: string,
+    dateEnd: Date,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
     return EditDateEndHelper(
       definitionId,
@@ -360,13 +367,13 @@ export class DefinitionOfTheProjectAggregate
    * @param {string} stateApprove
    * @param {Date} dateStart
    * @param {Date} dateEnd
-   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
    * @memberof DefinitionOfTheProjectAggregate
    */
   registerDefinitionProject(
     definitionId: string,
     description: string,
-    stateApprove: string,
+    stateApprove: boolean,
     dateStart: Date,
     dateEnd: Date,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
@@ -376,7 +383,7 @@ export class DefinitionOfTheProjectAggregate
       stateApprove,
       dateStart,
       dateEnd,
-      this.definitionOfTheProjectObtainedEventPublisher,
+      this.registedDefinitionOfTheProjectEventPublisher,
       this.definitionoftheprojectService,
     );
   }

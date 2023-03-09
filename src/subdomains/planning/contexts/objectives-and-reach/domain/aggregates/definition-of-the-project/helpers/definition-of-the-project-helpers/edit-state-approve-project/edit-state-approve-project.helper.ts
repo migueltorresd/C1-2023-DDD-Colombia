@@ -1,5 +1,5 @@
 import { DefinitionOfTheProjectDomainEntity } from '../../../../../entities/definition-of-the-project.domain-entity';
-import { ProjectDescriptionEditedEventPublisher } from '../../../../../events/publishers/definition-of-the-project/project-description-edited.event-publisher';
+import { StateApproveEditedEventPublisher } from '../../../../../events/publishers/definition-of-the-project/state-approve-edited.event-publisher';
 import { IDefinitionOfTheProjectDomainService } from '../../../../../services/definition-of-the-project.domain-service';
 
 /**
@@ -9,12 +9,12 @@ import { IDefinitionOfTheProjectDomainService } from '../../../../../services/de
  * @param {boolean} stateApprove
  * @param {ProjectDescriptionEditedEventPublisher} event
  * @param {IDefinitionOfTheProjectDomainService} [service]
- * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+ * @return {Promise<DefinitionOfTheProjectDomainEntity>}
  */
 export const EditStateApproveProjectHelper = async (
   definitionId: string,
   stateApprove: boolean,
-  event: ProjectDescriptionEditedEventPublisher,
+  event: StateApproveEditedEventPublisher,
   service?: IDefinitionOfTheProjectDomainService,
 ): Promise<DefinitionOfTheProjectDomainEntity> => {
   if (!event) throw new Error('El evento no está definido');

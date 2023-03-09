@@ -1,6 +1,5 @@
 import { EventPublisherBase } from 'src/shared/sofka/bases/event-publisher.base';
-import { ProjectDomainEntity } from '../../../entities/project.domain-entity';
-
+import { DefinitionOfTheProjectDomainEntity } from '../../../entities/definition-of-the-project.domain-entity';
 /**
  * publicar el evento de estado aprobado editado
  *
@@ -11,7 +10,7 @@ import { ProjectDomainEntity } from '../../../entities/project.domain-entity';
  * @template Response
  */
 export abstract class StateApproveEditedEventPublisher<
-  Response = ProjectDomainEntity,
+  Response = DefinitionOfTheProjectDomainEntity,
 > extends EventPublisherBase<Response> {
   publish<result = any>(): Promise<result> {
     return this.emit(
