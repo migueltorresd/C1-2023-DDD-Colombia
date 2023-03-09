@@ -1,8 +1,8 @@
 import { EventPublisherBase } from 'src/shared/sofka/bases/event-publisher.base';
-import { DefinitionOfTheProjectDomainEntity } from '../../../entities/definition-of-the-project.domain-entity';
+import { ProjectDomainEntity } from '../../../entities/project.domain-entity';
 
 export abstract class BudgetEditedEventPublisher<
-  Response = DefinitionOfTheProjectDomainEntity,
+  Response = ProjectDomainEntity,
 > extends EventPublisherBase<Response> {
   publish<Result = any>(): Promise<Result> {
     return this.emit(

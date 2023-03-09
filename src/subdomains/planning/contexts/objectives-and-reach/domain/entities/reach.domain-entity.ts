@@ -2,28 +2,27 @@ import { DefinitionValueObject } from '../value-objects/reach/definition/definit
 import { PrioritizeValueObject } from '../value-objects/reach/prioritize/prioritize.value-object';
 import { ReachIdValueObject } from '../value-objects/reach/reach-id/reach-id.value-object';
 import { StateDefinitionValueObject } from '../value-objects/reach/state-definition/state-definition.value-object';
-import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
-import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
-
+import { IDefinitionOfTheProjectDomainInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
+import { IReachDomainInterface } from './interfaces/reach.domain-entity.interface';
 /**
  * Clase que representa la entidad de dominio de alcance para esto implementa la interfaz IReachDomainEntity
  *
  * @export
  * @class ReachDomainEntity
- * @implements {IReachDomainEntity}
+ * @implements {IReachDomainInterface}
  */
-export class ReachDomainEntity implements IReachDomainEntity {
+export class ReachDomainEntity implements IReachDomainInterface {
   reachId?: string | ReachIdValueObject;
   definition?: string | DefinitionValueObject;
   prioritize?: string | PrioritizeValueObject;
   stateDefinition?: string | StateDefinitionValueObject;
-  definitionOfTheProject?: IDefinitionOfTheProjectDomainEntityInterface;
+  definitionOfTheProject?: IDefinitionOfTheProjectDomainInterface;
   /**
    * se crea la instancia de ReachDomainEntity.
-   * @param {IReachDomainEntity} [data]
-   * @memberof ReachDomainEntity
+   * @param {IReachDomainInterface} [data]
+   * @memberof ReachDomainInterface
    */
-  constructor(data?: IReachDomainEntity) {
+  constructor(data?: IReachDomainInterface) {
     if (data?.reachId) this.reachId = data.reachId;
     if (data?.definition) this.definition = data.definition;
     if (data?.prioritize) this.prioritize = data.prioritize;

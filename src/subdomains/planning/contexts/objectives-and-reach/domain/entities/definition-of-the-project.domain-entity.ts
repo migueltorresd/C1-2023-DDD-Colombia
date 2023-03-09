@@ -3,9 +3,8 @@ import { DateStartObjectValue } from '../value-objects/Definition-the-project/da
 import { DefinitionProjectIdValueObject } from '../value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
 import { DescriptionObjectValue } from '../value-objects/Definition-the-project/description/description.value-object';
 import { StateApproveObjectValue } from '../value-objects/proyect/state-approve/state-approve.value-object';
-import { IDefinitionOfTheProjectDomainEntityInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
-import { IProjectDomainEntity } from './interfaces/project.domain-entity.interface';
-import { IReachDomainEntity } from './interfaces/reach.domain-entity.interface';
+import { IDefinitionOfTheProjectDomainInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
+
 import { ProjectDomainEntity } from './project.domain-entity';
 import { ReachDomainEntity } from './reach.domain-entity';
 
@@ -14,11 +13,14 @@ import { ReachDomainEntity } from './reach.domain-entity';
  *
  * @export
  * @class DefinitionOfTheProjectDomainEntity
- * @implements {IDefinitionOfTheProjectDomainEntityInterface}
+ * @implements {IDefinitionOfTheProjectDomainInterface}
  */
 export class DefinitionOfTheProjectDomainEntity
-  implements IDefinitionOfTheProjectDomainEntityInterface
+  implements IDefinitionOfTheProjectDomainInterface
 {
+  registerDefinitionProject(definitionId: string, description: string, stateApprove: boolean, dateStart: string, dateEnd: string): DefinitionOfTheProjectDomainEntity | DefinitionOfTheProjectDomainEntity[] | PromiseLike<DefinitionOfTheProjectDomainEntity | DefinitionOfTheProjectDomainEntity[] | null> | null {
+      throw new Error("Method not implemented.");
+  }
   definitionId?: string | DefinitionProjectIdValueObject;
   description?: string | DescriptionObjectValue;
   stateApprove?: boolean | StateApproveObjectValue;
@@ -29,10 +31,10 @@ export class DefinitionOfTheProjectDomainEntity
 
   /**
    * crea una instancia de la clase DefinitionOfTheProjectDomainEntity.
-   * @param {IDefinitionOfTheProjectDomainEntityInterface} [data]
+   * @param {IDefinitionOfTheProjectDomainInterface} [data]
    * @memberof DefinitionOfTheProjectDomainEntity
    */
-  constructor(data?: IDefinitionOfTheProjectDomainEntityInterface) {
+  constructor(data?: IDefinitionOfTheProjectDomainInterface) {
     if (data?.definitionId) this.definitionId = data.definitionId;
     if (data?.description) this.description = data.description;
     if (data?.stateApprove) this.stateApprove = data.stateApprove;

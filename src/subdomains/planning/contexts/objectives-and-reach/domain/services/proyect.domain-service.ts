@@ -63,7 +63,7 @@ export interface IProjectDomainService<
    * @return {*}  {Promise<Entity>}
    * @memberof IProyectDomainService
    */
-  getPyrojectById(
+  getProjectById(
     projectId?: string,
     name?: string,
     budget?: number,

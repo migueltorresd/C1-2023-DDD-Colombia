@@ -14,16 +14,20 @@ export interface IDefinitionOfTheProjectDomainService<
    * Crea una descripción del proyecto
    *
    * @param {string} definitionId
+   * @param {string} description
    * @return {*}  {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
-  createDescripcionProject(definitionId: string): Promise<Entity>;
+  createDescripcionProject(
+    definitionId: string,
+    description: string,
+  ): Promise<Entity>;
   /**
    * Edita una descripción del proyecto
    *
    * @param {string} definitionId
    * @param {string} description
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
   editDescripcionProject(
@@ -35,29 +39,33 @@ export interface IDefinitionOfTheProjectDomainService<
    *
    * @param {string} definitionId
    * @param {string} stateApprove
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
   editStateApproveProject(
     definitionId: string,
-    stateApprove: string,
+    stateApprove: boolean,
   ): Promise<Entity>;
+
   /**
-   * Crea una fecha de finalización del proyecto
+   * Agrega una fecha de inicio del proyecto
    *
+   * @param {string} definitionId
+   * @param {string} dateEnd
+   * @return {Promise<Entity>}
+   * @memberof IDefinitionOfTheProjectDomainService
+   */
+  addDateEnd(definitionId: string, dateEnd: string): Promise<Entity>;
+
+  /**
+   * Edita una fecha de inicio del proyecto
+   *
+   * @param {string} definitionId
    * @param {string} dateEnd
    * @return {*}  {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
-  addDateEnd(dateEnd: string): Promise<Entity>;
-  /**
-   * Edita una fecha de finalización del proyecto
-   *
-   * @param {string} dateEnd
-   * @return {*}  {Promise<Entity>}
-   * @memberof IDefinitionOfTheProjectDomainService
-   */
-  editDateEnd(dateEnd: string): Promise<Entity>;
+  editDateEnd(definitionId: string, dateEnd: string): Promise<Entity>;
   /**
    * registra una definicion del proyecto
    *
@@ -66,7 +74,7 @@ export interface IDefinitionOfTheProjectDomainService<
    * @param {string} stateApprove
    * @param {Date} dateStart
    * @param {Date} dateEnd
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IDefinitionOfTheProjectDomainService
    */
   registerDefinitionProject(

@@ -1,5 +1,3 @@
-/* Importing the interfaces and classes that are going to be used in the aggregate root. */
-import { AggregateRootException } from 'src/shared/sofka';
 import { DefinitionOfTheProjectDomainEntity } from '../../entities/definition-of-the-project.domain-entity';
 import { ProjectDomainEntity } from '../../entities/project.domain-entity';
 import { ReachDomainEntity } from '../../entities/reach.domain-entity';
@@ -22,107 +20,349 @@ import { ReachOfTheProjectCreatedEventPublisher } from '../../events/publishers/
 import { IDefinitionOfTheProjectDomainService } from '../../services/definition-of-the-project.domain-service';
 import { IProjectDomainService } from '../../services/proyect.domain-service';
 import { IReachDomainService } from '../../services/reach.domain-service';
+import { AddDateEndHelper } from './helpers/definition-of-the-project-helpers/add-date-end/add-date-end.helper';
+import { createDescripcionProjectHelper } from './helpers/definition-of-the-project-helpers/create-descripcion-project/create-descripcion-project.helper';
+import { EditDateEndHelper } from './helpers/definition-of-the-project-helpers/edit-date-end/edit-date-end.helper';
+import { EditDescripcionProjectHelper } from './helpers/definition-of-the-project-helpers/edit-descripcion-project/edit-descripcion-project.helper';
+import { EditStateApproveProjectHelper } from './helpers/definition-of-the-project-helpers/edit-state-approve-project/edit-state-approve-project.helper';
+import { RegisterDefinitionProjectHelpers } from './helpers/definition-of-the-project-helpers/register-definition-project/register-definition-project.helpers';
+import { createProjectHelper } from './helpers/project-helpers/create-project/create-project.helper';
+import { EditBudgetHelper } from './helpers/project-helpers/edit-budget/edit-budget.helper';
+import { EditNameHelper } from './helpers/project-helpers/edit-name/edit-name.helper';
+import { EditStateApproveHelper } from './helpers/project-helpers/edit-state-approve/edit-state-approve.helper';
+import { GetProjectByIdHelper } from './helpers/project-helpers/get-project-by-id/get-project-by-id.helper';
+import { CreateReachHelper } from './helpers/reach-helpers/create-reach/create-reach.helper';
+import { EditDefinitionHelper } from './helpers/reach-helpers/edit-definition/edit-definition.helper';
+import { EditPrioritizeHelper } from './helpers/reach-helpers/edit-prioritize/edit-prioritize.helper';
+import { EditStateDefinitionHelper } from './helpers/reach-helpers/edit-state-definition/edit-state-definition.helper';
 
-export class DefinitionOfTheProjectAggregateRoot
+export class DefinitionOfTheProjectAggregate
   implements
-    IDefinitionOfTheProjectDomainService,
+    IReachDomainService,
     IProjectDomainService,
-    IReachDomainService
+    IDefinitionOfTheProjectDomainService
 {
-  //interfaces
-  private readonly defifinitionOfTheProject: IDefinitionOfTheProjectDomainService;
-  private readonly project: IProjectDomainService;
   private readonly reachService: IReachDomainService;
-  //definition
-  private readonly addedEndDateEventPublisher: AddedEndDateEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly dateEndEditedEventPublisher: DateEndEditedEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly definitionOfTheProjectEventPublisher: DefinitionOfTheProjectObtainedEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly projectDescriptionCreatedEventPublisher: ProjectDescriptionCreatedEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly projectDescriptionEditedEventPublisher: ProjectDescriptionEditedEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly registedDefinitionOfTheProjectEventPublisher: RegistedDefinitionOfTheProjectEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  private readonly stateApproveEditedEventPublisher: StateApproveEditedEventPublisher<DefinitionOfTheProjectDomainEntity>;
-  //project
-  private readonly budgetEditedEventPublisher: BudgetEditedEventPublisher<ProjectDomainEntity>;
-  private readonly nameEditedEventPublisher: NameEditedEventPublisher<ProjectDomainEntity>;
-  private readonly projectCreatedEventPublisher: ProjectCreatedEventPublisher<ProjectDomainEntity>;
-  private readonly projectObtainedEventPublisher: ProjectObtainedEventPublisher<ProjectDomainEntity>;
-  private readonly projectStatusEditedEventPublisher: ProjectStatusEditedEventPublisher<ProjectDomainEntity>;
-  //reach
-  private readonly editedReachDefinitionEventPublisher: EditedReachDefinitionEventPublisher<ReachDomainEntity>;
-  private readonly editedStateDefinitionEventPublisher: EditedStateDefinitionEventPublisher<ReachDomainEntity>;
-  private readonly prioritizationEditedEventPublisher: PrioritizationEditedEventPublisher<ReachDomainEntity>;
-  private readonly reachOfTheProjectCreatedEventPublisher: ReachOfTheProjectCreatedEventPublisher<ReachDomainEntity>;
+  private readonly projectService: IProjectDomainService;
+  private readonly definitionoftheprojectService: IDefinitionOfTheProjectDomainService;
+  // reach
+  private readonly reachOfTheProjectCreatedEventPublisher: ReachOfTheProjectCreatedEventPublisher;
+  private readonly editedReachDefinitionEventPublisher: EditedReachDefinitionEventPublisher;
+  private readonly prioritizationEditedEventPublisher: PrioritizationEditedEventPublisher;
+  private readonly editedStateDefinitionEventPublisher: EditedStateDefinitionEventPublisher;
+  // project
+  private readonly projectCreatedEventPublisher: ProjectCreatedEventPublisher;
+  private readonly nameEditedEventPublisher: NameEditedEventPublisher;
+  private readonly budgetEditedEventPublisher: BudgetEditedEventPublisher;
+  private readonly projectStatusEditedEventPublisher: ProjectStatusEditedEventPublisher;
+  private readonly projectObtainedEventPublisher: ProjectObtainedEventPublisher;
+  // DefinitionOfTheProjectAggregate
+  private readonly addedEndDateEventPublisher: AddedEndDateEventPublisher;
+  private readonly dateEndEditedEventPublisher: DateEndEditedEventPublisher;
+  private readonly definitionOfTheProjectObtainedEventPublisher: DefinitionOfTheProjectObtainedEventPublisher;
+  private readonly projectDescriptionCreatedEventPublisher: ProjectDescriptionCreatedEventPublisher;
+  private readonly projectDescriptionEditedEventPublisher: ProjectDescriptionEditedEventPublisher;
+  private readonly registedDefinitionOfTheProjectEventPublisher: RegistedDefinitionOfTheProjectEventPublisher;
+  private readonly stateApproveEditedEventPublisher: StateApproveEditedEventPublisher;
 
-  constructor({
-    defifinitionoftheproject,
-    project,
-    reach,
-    //definition
-    addedEndDateEventPublisher,
-    dateEndEditedEventPublisher,
-    definitionOfTheProjectEventPublisher,
-    projectDescriptionCreatedEventPublisher,
-    projectDescriptionEditedEventPublisher,
-    registedDefinitionOfTheProjectEventPublisher,
-    stateApproveEditedEventPublisher,
-    //project
-    budgetEditedEventPublisher,
-    nameEditedEventPublisher,
-    projectCreatedEventPublisher,
-    projectObtainedEventPublisher,
-    projectStatusEditedEventPublisher,
-    //reach
-    editedReachDefinitionEventPublisher,
-    editedStateDefinitionEventPublisher,
-    prioritizationEditedEventPublisher,
-    reachOfTheProjectCreatedEventPublisher,
-  }: {
-    defifinitionoftheproject?: IDefinitionOfTheProjectDomainService;
-    project?: IProjectDomainService;
-    reach?: IReachDomainService;
-    //definition
-    addedEndDateEventPublisher: AddedEndDateEventPublisher;
-    dateEndEditedEventPublisher: DateEndEditedEventPublisher;
-    definitionOfTheProjectEventPublisher: DefinitionOfTheProjectObtainedEventPublisher;
-    projectDescriptionCreatedEventPublisher: ProjectDescriptionCreatedEventPublisher;
-    projectDescriptionEditedEventPublisher: ProjectDescriptionEditedEventPublisher;
-    registedDefinitionOfTheProjectEventPublisher: RegistedDefinitionOfTheProjectEventPublisher;
-    stateApproveEditedEventPublisher: StateApproveEditedEventPublisher;
-    //project
-    budgetEditedEventPublisher: BudgetEditedEventPublisher;
-    nameEditedEventPublisher: NameEditedEventPublisher;
-    projectCreatedEventPublisher: ProjectCreatedEventPublisher;
-    projectObtainedEventPublisher: ProjectObtainedEventPublisher;
-    projectStatusEditedEventPublisher: ProjectStatusEditedEventPublisher;
-    //reach
-    editedReachDefinitionEventPublisher: EditedReachDefinitionEventPublisher;
-    editedStateDefinitionEventPublisher: EditedStateDefinitionEventPublisher;
-    prioritizationEditedEventPublisher: PrioritizationEditedEventPublisher;
-    reachOfTheProjectCreatedEventPublisher: ReachOfTheProjectCreatedEventPublisher;
-  }) {}
+  //   constructor({ reachService, reachOfTheProjectCreatedEventPublisher }: { reachService: IReachDomainService; reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher; }) {
+  //     this.reachService = reachService;
+  //     this.reachOfTheProjectCreatedEventPublisher = reachOfTheProjectCreatedEventPublisher;
+  //   }
+
+  // reach ----------------------------------------
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función CreateReachHelper
+   *
+   * @param {string} definitionId
+   * @param {string} definition
+   * @param {string} prioritize
+   * @param {string} stateDefinition
+   * @return {Promise<ReachDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  createReach(
+    definitionId: string,
+    definition: string,
+    prioritize: string,
+    stateDefinition: string,
+  ): Promise<ReachDomainEntity> {
+    return CreateReachHelper(
+      definitionId,
+      definition,
+      prioritize,
+      stateDefinition,
+      this.reachOfTheProjectCreatedEventPublisher,
+      this.reachService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDefinitionHelper
+   *
+   * @param {string} definitionId
+   * @param {string} definition
+   * @return {Promise<ReachDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editDefinition(
+    definitionId: string,
+    definition: string,
+  ): Promise<ReachDomainEntity> {
+    return EditDefinitionHelper(
+      definitionId,
+      definition,
+      this.editedReachDefinitionEventPublisher,
+      this.reachService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditPrioritizeHelper
+   *
+   * @param {string} definitionId
+   * @param {string} prioritize
+   * @return {Promise<ReachDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editPrioritize(
+    definitionId: string,
+    prioritize: string,
+  ): Promise<ReachDomainEntity> {
+    return EditPrioritizeHelper(
+      definitionId,
+      prioritize,
+      this.prioritizationEditedEventPublisher,
+      this.reachService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateDefinitionHelper
+   *
+   * @param {string} definitionId
+   * @param {string} stateDefinition
+   * @return {Promise<ReachDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editStateDefinition(
+    definitionId: string,
+    stateDefinition: string,
+  ): Promise<ReachDomainEntity> {
+    return EditStateDefinitionHelper(
+      definitionId,
+      stateDefinition,
+      this.editedStateDefinitionEventPublisher,
+      this.reachService,
+    );
+  }
+  // project --------------------------------------
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función createProjectHelper
+   *
+   * @param {string} projectId
+   * @param {string} name
+   * @param {number} budget
+   * @param {boolean} stateApprove
+   * @return {Promise<ProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  createProject(
+    projectId: string,
+    name: string,
+    budget: number,
+    stateApprove: boolean,
+  ): Promise<ProjectDomainEntity> {
+    return createProjectHelper(
+      projectId,
+      name,
+      budget,
+      stateApprove,
+      this.projectCreatedEventPublisher,
+      this.projectService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
+   *
+   * @param {string} projectId
+   * @param {number} budget
+   * @return {Promise<ProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editBudget(projectId: string, budget: number): Promise<ProjectDomainEntity> {
+    return EditBudgetHelper(
+      projectId,
+      budget,
+      this.budgetEditedEventPublisher,
+      this.projectService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
+   *
+   * @param {string} projectId
+   * @param {string} name
+   * @return {*}  {Promise<ProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editName(projectId: string, name: string): Promise<ProjectDomainEntity> {
+    return EditNameHelper(
+      projectId,
+      name,
+      this.nameEditedEventPublisher,
+      this.projectService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateApproveHelper
+   *
+   * @param {string} projectId
+   * @param {boolean} stateApprove
+   * @return {Promise<ProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editStateApprove(
+    projectId: string,
+    stateApprove: boolean,
+  ): Promise<ProjectDomainEntity> {
+    return EditStateApproveHelper(
+      projectId,
+      stateApprove,
+      this.projectStatusEditedEventPublisher,
+      this.projectService,
+    );
+  }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
+   *
+   * @param {string} projectId
+   * @param {string} name
+   * @param {number} budget
+   * @param {boolean} stateApprove
+   * @return {Promise<ProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  getProjectById(
+    projectId: string,
+    name: string,
+    budget: number,
+    stateApprove: boolean,
+  ): Promise<ProjectDomainEntity> {
+    return GetProjectByIdHelper(
+      projectId,
+      name,
+      budget,
+      stateApprove,
+      this.projectObtainedEventPublisher,
+      this.projectService,
+    );
+  }
+  // DefinitionOfTheProjectAggregate ------------------
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función createDescripcionProjectHelper
+   *
+   * @param {string} definitionId
+   * @param {string} description
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
   createDescripcionProject(
     definitionId: string,
+    description: string,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+    return createDescripcionProjectHelper(
+      definitionId,
+      description,
+      this.projectDescriptionCreatedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDescripcionProjectHelper
+   *
+   * @param {string} definitionId
+   * @param {string} description
+   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
   editDescripcionProject(
     definitionId: string,
     description: string,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+    return EditDescripcionProjectHelper(
+      definitionId,
+      description,
+      this.projectDescriptionEditedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateApproveProjectHelper
+   *
+   * @param {string} definitionId
+   * @param {boolean} stateApprove
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
   editStateApproveProject(
     definitionId: string,
-    stateApprove: string,
+    stateApprove: boolean,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+    return EditStateApproveProjectHelper(
+      definitionId,
+      stateApprove,
+      this.stateApproveEditedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
-  addDateEnd(dateEnd: string): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
+   *
+   * @param {string} definitionId
+   * @param {string} dateEnd
+   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  addDateEnd(
+    definitionId: string,
+    dateEnd: string,
+  ): Promise<DefinitionOfTheProjectDomainEntity> {
+    return AddDateEndHelper(
+      definitionId,
+      dateEnd,
+      this.dateEndEditedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
-  editDateEnd(dateEnd: string): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
+   *
+   * @param {string} definitionId
+   * @param {string} dateEnd
+   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  editDateEnd(
+    definitionId: string,
+    dateEnd: string,
+  ): Promise<DefinitionOfTheProjectDomainEntity> {
+    return EditDateEndHelper(
+      definitionId,
+      dateEnd,
+      this.dateEndEditedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
+   *
+   * @param {string} definitionId
+   * @param {string} description
+   * @param {string} stateApprove
+   * @param {Date} dateStart
+   * @param {Date} dateEnd
+   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
+   * @memberof DefinitionOfTheProjectAggregate
+   */
   registerDefinitionProject(
     definitionId: string,
     description: string,
@@ -130,77 +370,14 @@ export class DefinitionOfTheProjectAggregateRoot
     dateStart: Date,
     dateEnd: Date,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-
-  async createReach(
-    definitionId: string,
-    definition: string,
-    prioritize: string,
-    stateDefinition: string,
-  ): Promise<ReachDomainEntity> {
-    if (!this.reachOfTheProjectCreatedEventPublisher) {
-      throw new AggregateRootException('reach is not defined');
-    }
-    if (this.reachService) {
-      throw new AggregateRootException('reach is not defined');
-    }
-    this.project.createProject();
-    this.defifinitionOfTheProject.createDescripcionProject('');
-    this.reachService.createReach();
-    // const response = await this.reachService(
-    //   definitionId,
-    //   definition,
-    //   prioritize,
-    //   stateDefinition,
-    // );
-    this.reachOfTheProjectCreatedEventPublisher.publish();
-    return response;
-  }
-  editDefinition(
-    definitionId: string,
-    definition: string,
-  ): Promise<ReachDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  editPrioritize(
-    definitionId: string,
-    prioritize: string,
-  ): Promise<ReachDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  editStateDefinition(
-    definitionId: string,
-    stateDefinition: string,
-  ): Promise<ReachDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  createProject(
-    projectId: string,
-    name: string,
-    budget: number,
-    stateApprove: boolean,
-  ): Promise<ProjectDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  editName(projectI: string, name: string): Promise<ProjectDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  editBudget(projectId: string, budget: number): Promise<ProjectDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  editStateApprove(
-    projectId: string,
-    stateApprove: boolean,
-  ): Promise<ProjectDomainEntity> {
-    throw new Error('Method not implemented.');
-  }
-  getPyrojectById(
-    projectId: string,
-    name: string,
-    budget: number,
-    stateApprove: boolean,
-  ): Promise<ProjectDomainEntity> {
-    throw new Error('Method not implemented.');
+    return RegisterDefinitionProjectHelpers(
+      definitionId,
+      description,
+      stateApprove,
+      dateStart,
+      dateEnd,
+      this.definitionOfTheProjectObtainedEventPublisher,
+      this.definitionoftheprojectService,
+    );
   }
 }
