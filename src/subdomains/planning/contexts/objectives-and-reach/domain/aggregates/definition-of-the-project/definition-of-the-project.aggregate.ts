@@ -65,17 +65,152 @@ export class DefinitionOfTheProjectAggregate
   private readonly registedDefinitionOfTheProjectEventPublisher: RegistedDefinitionOfTheProjectEventPublisher;
   private readonly stateApproveEditedEventPublisher: StateApproveEditedEventPublisher;
 
-  // constructor({
-  //   reachService,
-  //   reachOfTheProjectCreatedEventPublisher,
-  // }: {
-  //   reachService: IReachDomainService;
-  //   reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher;
-  // }) {
-  //   this.reachService = reachService;
-  //   this.reachOfTheProjectCreatedEventPublisher =
-  //     reachOfTheProjectCreatedEventPublisher;
-  // }
+  /**
+   * Crea una instancia de DefinitionOfTheProjectAggregate.
+   * @param {{
+   *     reachService: IReachDomainService;
+   *     projectService: IProjectDomainService;
+   *     definitionoftheprojectService: IDefinitionOfTheProjectDomainService;
+   *     //reach
+   *     reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher;
+   *     editedReachDefinitionEventPublisher?: EditedReachDefinitionEventPublisher;
+   *     prioritizationEditedEventPublisher?: PrioritizationEditedEventPublisher;
+   *     editedStateDefinitionEventPublisher?: EditedStateDefinitionEventPublisher;
+   *     //project
+   *     projectCreatedEventPublisher?: ProjectCreatedEventPublisher;
+   *     nameEditedEventPublisher?: NameEditedEventPublisher;
+   *     budgetEditedEventPublisher?: BudgetEditedEventPublisher;
+   *     projectStatusEditedEventPublisher?: ProjectStatusEditedEventPublisher;
+   *     projectObtainedEventPublisher?: ProjectObtainedEventPublisher;
+   *     //DefinitionOfTheProjectAggregate
+   *     addedEndDateEventPublisher?: AddedEndDateEventPublisher;
+   *     dateEndEditedEventPublisher?: DateEndEditedEventPublisher;
+   *     definitionOfTheProjectObtainedEventPublisher?: DefinitionOfTheProjectObtainedEventPublisher;
+   *     projectDescriptionCreatedEventPublisher?: ProjectDescriptionCreatedEventPublisher;
+   *     projectDescriptionEditedEventPublisher?: ProjectDescriptionEditedEventPublisher;
+   *     registedDefinitionOfTheProjectEventPublisher?: RegistedDefinitionOfTheProjectEventPublisher;
+   *     stateApproveEditedEventPublisher?: StateApproveEditedEventPublisher;
+   *   }} {
+   *     reachService,
+   *     projectService,
+   *     definitionoftheprojectService,
+   *     //reach
+   *     reachOfTheProjectCreatedEventPublisher,
+   *     editedReachDefinitionEventPublisher,
+   *     prioritizationEditedEventPublisher,
+   *     editedStateDefinitionEventPublisher,
+   *     //project
+   *     projectCreatedEventPublisher,
+   *     nameEditedEventPublisher,
+   *     budgetEditedEventPublisher,
+   *     projectStatusEditedEventPublisher,
+   *     projectObtainedEventPublisher,
+   *     //DefinitionOfTheProjectAggregate
+   *     addedEndDateEventPublisher,
+   *     dateEndEditedEventPublisher,
+   *     definitionOfTheProjectObtainedEventPublisher,
+   *     projectDescriptionCreatedEventPublisher,
+   *     projectDescriptionEditedEventPublisher,
+   *     registedDefinitionOfTheProjectEventPublisher,
+   *     stateApproveEditedEventPublisher,
+   *   }
+   * @memberof DefinitionOfTheProjectAggregate
+   */
+  constructor({
+    reachService,
+    projectService,
+    definitionoftheprojectService,
+    //reach
+    reachOfTheProjectCreatedEventPublisher,
+    editedReachDefinitionEventPublisher,
+    prioritizationEditedEventPublisher,
+    editedStateDefinitionEventPublisher,
+    //project
+    projectCreatedEventPublisher,
+    nameEditedEventPublisher,
+    budgetEditedEventPublisher,
+    projectStatusEditedEventPublisher,
+    projectObtainedEventPublisher,
+    //DefinitionOfTheProjectAggregate
+    addedEndDateEventPublisher,
+    dateEndEditedEventPublisher,
+    definitionOfTheProjectObtainedEventPublisher,
+    projectDescriptionCreatedEventPublisher,
+    projectDescriptionEditedEventPublisher,
+    registedDefinitionOfTheProjectEventPublisher,
+    stateApproveEditedEventPublisher,
+  }: {
+    reachService: IReachDomainService;
+    projectService: IProjectDomainService;
+    definitionoftheprojectService: IDefinitionOfTheProjectDomainService;
+    //reach
+    reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher;
+    editedReachDefinitionEventPublisher?: EditedReachDefinitionEventPublisher;
+    prioritizationEditedEventPublisher?: PrioritizationEditedEventPublisher;
+    editedStateDefinitionEventPublisher?: EditedStateDefinitionEventPublisher;
+    //project
+    projectCreatedEventPublisher?: ProjectCreatedEventPublisher;
+    nameEditedEventPublisher?: NameEditedEventPublisher;
+    budgetEditedEventPublisher?: BudgetEditedEventPublisher;
+    projectStatusEditedEventPublisher?: ProjectStatusEditedEventPublisher;
+    projectObtainedEventPublisher?: ProjectObtainedEventPublisher;
+    //DefinitionOfTheProjectAggregate
+    addedEndDateEventPublisher?: AddedEndDateEventPublisher;
+    dateEndEditedEventPublisher?: DateEndEditedEventPublisher;
+    definitionOfTheProjectObtainedEventPublisher?: DefinitionOfTheProjectObtainedEventPublisher;
+    projectDescriptionCreatedEventPublisher?: ProjectDescriptionCreatedEventPublisher;
+    projectDescriptionEditedEventPublisher?: ProjectDescriptionEditedEventPublisher;
+    registedDefinitionOfTheProjectEventPublisher?: RegistedDefinitionOfTheProjectEventPublisher;
+    stateApproveEditedEventPublisher?: StateApproveEditedEventPublisher;
+  }) {
+    this.reachService = reachService;
+    this.projectService = projectService;
+    this.definitionoftheprojectService = definitionoftheprojectService;
+    // reach
+    this.reachOfTheProjectCreatedEventPublisher =
+      reachOfTheProjectCreatedEventPublisher ??
+      this.reachOfTheProjectCreatedEventPublisher;
+    this.editedReachDefinitionEventPublisher =
+      editedReachDefinitionEventPublisher ??
+      this.editedReachDefinitionEventPublisher;
+    this.prioritizationEditedEventPublisher =
+      prioritizationEditedEventPublisher ??
+      this.prioritizationEditedEventPublisher;
+    this.editedStateDefinitionEventPublisher =
+      editedStateDefinitionEventPublisher ??
+      this.editedStateDefinitionEventPublisher;
+    // project
+    this.projectCreatedEventPublisher =
+      projectCreatedEventPublisher ?? this.projectCreatedEventPublisher;
+    this.nameEditedEventPublisher =
+      nameEditedEventPublisher ?? this.nameEditedEventPublisher;
+    this.budgetEditedEventPublisher =
+      budgetEditedEventPublisher ?? this.budgetEditedEventPublisher;
+    this.projectStatusEditedEventPublisher =
+      projectStatusEditedEventPublisher ??
+      this.projectStatusEditedEventPublisher;
+    this.projectObtainedEventPublisher =
+      projectObtainedEventPublisher ?? this.projectObtainedEventPublisher;
+    // DefinitionOfTheProjectAggregate
+    this.addedEndDateEventPublisher =
+      addedEndDateEventPublisher ?? this.addedEndDateEventPublisher;
+    this.dateEndEditedEventPublisher =
+      dateEndEditedEventPublisher ?? this.dateEndEditedEventPublisher;
+    this.definitionOfTheProjectObtainedEventPublisher =
+      definitionOfTheProjectObtainedEventPublisher ??
+      this.definitionOfTheProjectObtainedEventPublisher;
+    this.projectDescriptionCreatedEventPublisher =
+      projectDescriptionCreatedEventPublisher ??
+      this.projectDescriptionCreatedEventPublisher;
+    this.projectDescriptionEditedEventPublisher =
+      projectDescriptionEditedEventPublisher ??
+      this.projectDescriptionEditedEventPublisher;
+    this.registedDefinitionOfTheProjectEventPublisher =
+      registedDefinitionOfTheProjectEventPublisher ??
+      this.registedDefinitionOfTheProjectEventPublisher;
+    this.stateApproveEditedEventPublisher =
+      stateApproveEditedEventPublisher ?? this.stateApproveEditedEventPublisher;
+  }
 
   // reach ----------------------------------------
   /**
