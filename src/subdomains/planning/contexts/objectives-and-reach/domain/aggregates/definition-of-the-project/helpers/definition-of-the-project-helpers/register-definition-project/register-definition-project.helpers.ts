@@ -15,22 +15,14 @@ import { IDefinitionOfTheProjectDomainService } from "../../../../../services/de
  * @return {Promise<DefinitionOfTheProjectDomainEntity>}
  */
 export const RegisterDefinitionProjectHelpers = async (
-   definitionId: string,
-   description: string,
-   stateApprove: boolean,
-   dateStart: Date,
-   dateEnd: Date,
+   entity: DefinitionOfTheProjectDomainEntity,
    event: RegistedDefinitionOfTheProjectEventPublisher,
    service: IDefinitionOfTheProjectDomainService,
    ): Promise<DefinitionOfTheProjectDomainEntity> => {
    if (!event) throw new Error('El evento no está definido');
    if (!service) throw new Error(' El servicio no está definido');
    event.response = await service.registerDefinitionProject(
-       definitionId,
-       description,
-       stateApprove,
-       dateStart,
-       dateEnd,
+       entity,
    );
    event.publish();
    return event.response;

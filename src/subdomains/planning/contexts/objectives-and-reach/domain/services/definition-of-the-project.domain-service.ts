@@ -78,10 +78,6 @@ export interface IDefinitionOfTheProjectDomainService<
    * @memberof IDefinitionOfTheProjectDomainService
    */
   registerDefinitionProject(
-    definitionId: string,
-    description: string,
-    stateApprove: boolean,
-    dateStart: Date,
-    dateEnd: Date,
+    entity: DefinitionOfTheProjectDomainEntity,
   ): Promise<Entity>;
 }

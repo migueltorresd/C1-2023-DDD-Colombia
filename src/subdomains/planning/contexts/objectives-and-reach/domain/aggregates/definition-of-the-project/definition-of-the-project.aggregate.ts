@@ -140,9 +140,9 @@ export class DefinitionOfTheProjectAggregate
     registedDefinitionOfTheProjectEventPublisher,
     stateApproveEditedEventPublisher,
   }: {
-    reachService: IReachDomainService;
-    projectService: IProjectDomainService;
-    definitionoftheprojectService: IDefinitionOfTheProjectDomainService;
+    reachService?: IReachDomainService;
+    projectService?: IProjectDomainService;
+    definitionoftheprojectService?: IDefinitionOfTheProjectDomainService;
     //reach
     reachOfTheProjectCreatedEventPublisher?: ReachOfTheProjectCreatedEventPublisher;
     editedReachDefinitionEventPublisher?: EditedReachDefinitionEventPublisher;
@@ -163,9 +163,10 @@ export class DefinitionOfTheProjectAggregate
     registedDefinitionOfTheProjectEventPublisher?: RegistedDefinitionOfTheProjectEventPublisher;
     stateApproveEditedEventPublisher?: StateApproveEditedEventPublisher;
   }) {
-    this.reachService = reachService;
-    this.projectService = projectService;
-    this.definitionoftheprojectService = definitionoftheprojectService;
+    this.reachService = reachService ?? this.reachService;
+    this.projectService = projectService ?? this.projectService;
+    this.definitionoftheprojectService =
+      definitionoftheprojectService ?? this.definitionoftheprojectService;
     // reach
     this.reachOfTheProjectCreatedEventPublisher =
       reachOfTheProjectCreatedEventPublisher ??
@@ -506,18 +507,10 @@ export class DefinitionOfTheProjectAggregate
    * @memberof DefinitionOfTheProjectAggregate
    */
   registerDefinitionProject(
-    definitionId: string,
-    description: string,
-    stateApprove: boolean,
-    dateStart: Date,
-    dateEnd: Date,
+    entity: DefinitionOfTheProjectDomainEntity,
   ): Promise<DefinitionOfTheProjectDomainEntity> {
     return RegisterDefinitionProjectHelpers(
-      definitionId,
-      description,
-      stateApprove,
-      dateStart,
-      dateEnd,
+      entity,
       this.registedDefinitionOfTheProjectEventPublisher,
       this.definitionoftheprojectService,
     );
