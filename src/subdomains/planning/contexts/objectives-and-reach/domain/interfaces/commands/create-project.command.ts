@@ -1,5 +1,5 @@
 /**
- * Esta interface representa el comando de creación de un proyecto
+ * Esta interface representa el comando de creación de una definicion de proyecto
  * @export
  * @interface ICreateProjecCommand
  */

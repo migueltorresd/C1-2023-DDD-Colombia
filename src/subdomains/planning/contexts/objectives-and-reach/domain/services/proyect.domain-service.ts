@@ -17,7 +17,7 @@ export interface IProjectDomainService<
    * @param {string} [name]
    * @param {number} [budget]
    * @param {boolean} [stateApprove]
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IProyectDomainService
    */
   createProject(
@@ -31,7 +31,7 @@ export interface IProjectDomainService<
    *
    * @param {string} [projectId]
    * @param {string} [name]
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IProyectDomainService
    */
   editName(projectId?: string, name?: string): Promise<Entity>;
@@ -40,7 +40,7 @@ export interface IProjectDomainService<
    *
    * @param {string} [projectId]
    * @param {number} [budget]
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IProyectDomainService
    */
   editBudget(projectId?: string, budget?: number): Promise<Entity>;
@@ -49,7 +49,7 @@ export interface IProjectDomainService<
    *
    * @param {string} [projectId]
    * @param {boolean} [stateApprove]
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IProyectDomainService
    */
   editStateApprove(projectId?: string, stateApprove?: boolean): Promise<Entity>;
@@ -60,7 +60,7 @@ export interface IProjectDomainService<
    * @param {string} [name]
    * @param {number} [budget]
    * @param {boolean} [stateApprove]
-   * @return {*}  {Promise<Entity>}
+   * @return {Promise<Entity>}
    * @memberof IProyectDomainService
    */
   getProjectById(

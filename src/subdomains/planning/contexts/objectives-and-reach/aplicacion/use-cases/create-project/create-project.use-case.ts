@@ -3,24 +3,32 @@ import {
   ValueObjectErrorHandler,
   ValueObjectException,
 } from 'src/shared/sofka';
-import { DefinitionOfTheProjectAggregate } from '../../domain/aggregates/definition-of-the-project/definition-of-the-project.aggregate';
-import { RegistedDefinitionOfTheProjectEventPublisher } from '../../domain/events/publishers/definition-of-the-project/registed-definition-of-the-project.event-publisher';
-import { ICreateProjecCommand } from '../../domain/interfaces/commands/create-project.command';
-import { ICreateProjectResponse } from '../../domain/interfaces/responses/project-created.response';
-import { IDefinitionOfTheProjectDomainService } from '../../domain/services/definition-of-the-project.domain-service';
-import { DateEndObjectValue } from '../../domain/value-objects/Definition-the-project/date-end/date-end.value-object';
-import { DateStartObjectValue } from '../../domain/value-objects/Definition-the-project/date-start/date-start.value-object';
-import { DefinitionProjectIdValueObject } from '../../domain/value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
-import { DescriptionObjectValue } from '../../domain/value-objects/Definition-the-project/description/description.value-object';
-import { BudgetObjectValue } from '../../domain/value-objects/proyect/budget/budget.value-object';
-import { NameObjectValue } from '../../domain/value-objects/proyect/name/name.value-object';
-import { ProjectIdValueObject } from '../../domain/value-objects/proyect/project-id/project-id.value-object';
-import { StateApproveObjectValue } from '../../domain/value-objects/proyect/state-approve/state-approve.value-object';
-import { DefinitionValueObject } from '../../domain/value-objects/reach/definition/definition.value-object';
-import { PrioritizeValueObject } from '../../domain/value-objects/reach/prioritize/prioritize.value-object';
-import { ReachIdValueObject } from '../../domain/value-objects/reach/reach-id/reach-id.value-object';
-import { StateDefinitionValueObject } from '../../domain/value-objects/reach/state-definition/state-definition.value-object';
+import { DefinitionOfTheProjectAggregate } from '../../../domain/aggregates/definition-of-the-project/definition-of-the-project.aggregate';
+import { RegistedDefinitionOfTheProjectEventPublisher } from '../../../domain/events/publishers/definition-of-the-project/registed-definition-of-the-project.event-publisher';
+import { ICreateProjecCommand } from '../../../domain/interfaces/commands/create-project.command';
+import { ICreateProjectResponse } from '../../../domain/interfaces/responses/project-created.response';
+import { IDefinitionOfTheProjectDomainService } from '../../../domain/services/definition-of-the-project.domain-service';
+import { DateEndObjectValue } from '../../../domain/value-objects/Definition-the-project/date-end/date-end.value-object';
+import { DateStartObjectValue } from '../../../domain/value-objects/Definition-the-project/date-start/date-start.value-object';
+import { DefinitionProjectIdValueObject } from '../../../domain/value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
+import { DescriptionObjectValue } from '../../../domain/value-objects/Definition-the-project/description/description.value-object';
+import { BudgetObjectValue } from '../../../domain/value-objects/proyect/budget/budget.value-object';
+import { NameObjectValue } from '../../../domain/value-objects/proyect/name/name.value-object';
+import { ProjectIdValueObject } from '../../../domain/value-objects/proyect/project-id/project-id.value-object';
+import { StateApproveObjectValue } from '../../../domain/value-objects/proyect/state-approve/state-approve.value-object';
+import { DefinitionValueObject } from '../../../domain/value-objects/reach/definition/definition.value-object';
+import { PrioritizeValueObject } from '../../../domain/value-objects/reach/prioritize/prioritize.value-object';
+import { ReachIdValueObject } from '../../../domain/value-objects/reach/reach-id/reach-id.value-object';
+import { StateDefinitionValueObject } from '../../../domain/value-objects/reach/state-definition/state-definition.value-object';
 
+/**
+ * se crea la clase que implementa la interfaz IUseCase y se le pasa el comando y la respuesta que se espera como parametro de la clase y se extiende de ValueObjectErrorHandler
+ *
+ * @export
+ * @class CreateProjectUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<ICreateProjecCommand, ICreateProjectResponse>}
+ */
 export class CreateProjectUseCase
   extends ValueObjectErrorHandler
   implements IUseCase<ICreateProjecCommand, ICreateProjectResponse>
@@ -36,6 +44,13 @@ export class CreateProjectUseCase
       registedDefinitionOfTheProjectEventPublisher,
     });
   }
+  /**
+   * se crea la función execute que recibe el comando y retorna la respuesta
+   *
+   * @param {ICreateProjecCommand} command
+   * @return {*}  {Promise<ICreateProjectResponse>}
+   * @memberof CreateProjectUseCase
+   */
   async execute(
     command: ICreateProjecCommand,
   ): Promise<ICreateProjectResponse> {
@@ -125,7 +140,7 @@ export class CreateProjectUseCase
         this.getErrors(),
       );
     }
-
+    //  se llama al agregado y se le pasa los value object y se espera la respuesta
     const respuesta = await this.projectAggregate.registerDefinitionProject({
       definitionId,
       dateStart,
