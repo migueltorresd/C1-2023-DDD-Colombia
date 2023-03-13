@@ -1,6 +1,6 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { IsState } from 'src/shared/validations/is-state.validation';
+import { IsState } from 'src/shared/validations/is-state/is-state.validation';
 
 export abstract class StateValueobjectBase extends ValueObjectBase<boolean> {
   abstract field(): string;

@@ -1,6 +1,6 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { IsUUID4 } from 'src/shared/validations/is-uuid-4.validation';
+import { IsUUID4 } from 'src/shared/validations/is-uuid/is-uuid-4.validation';
 
 export abstract class UUIDValueObjectBase extends ValueObjectBase<string> {
   abstract field(): string;

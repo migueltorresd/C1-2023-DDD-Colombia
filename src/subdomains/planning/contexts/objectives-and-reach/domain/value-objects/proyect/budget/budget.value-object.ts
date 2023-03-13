@@ -1,5 +1,5 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
-import { isPositiveNumber } from 'src/shared/validations/is-positive-number.validation';
+import { isPositiveNumber } from 'src/shared/validations/is-positive/is-positive-number.validation';
 
 /**
  * Esta clase valida si es un valor de tipo number y si es positivo

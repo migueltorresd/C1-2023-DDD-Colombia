@@ -1,7 +1,7 @@
 import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
 import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { StringMaxLength } from 'src/shared/validations/string-max-length.validation';
-import { StringMinLength } from 'src/shared/validations/string-min-length.validation';
+import { StringMaxLength } from 'src/shared/validations/string-max-length/string-max-length.validation';
+import { StringMinLength } from 'src/shared/validations/string-min-length/string-min-length.validation';
 
 export abstract class StringValueobjectBase extends ValueObjectBase<string> {
   abstract field(): string;
