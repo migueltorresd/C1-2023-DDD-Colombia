@@ -61,4 +61,37 @@ describe('IsEmpty', () => {
     expect(resultTrue).toBe(expected);
     expect(resultFalse).toBe(expected);
   });
+  test('debe devolver true si el valor es un nulo', () => {
+    // Arrange
+    const nullValue = null;
+    const expected = true;
+
+    // Act
+    const result = IsEmpty(nullValue);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
+  test('debe devolver true si el objeto es vacio', () => {
+    // Arrange
+    const emptyObject = {};
+    const expected = true;
+
+    // Act
+    const result = IsEmpty(emptyObject);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
+  test('debe devolver false cuando el objeto no está vacío', () => {
+    // Arrange
+    const nonEmptyObj = { prop: 'value' };
+    const expected = false;
+
+    // Act
+    const result = IsEmpty(nonEmptyObj);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
 });

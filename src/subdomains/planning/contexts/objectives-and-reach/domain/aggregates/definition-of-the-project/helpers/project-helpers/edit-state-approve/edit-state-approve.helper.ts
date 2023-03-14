@@ -5,11 +5,11 @@ import { IProjectDomainService } from '../../../../../services/proyect.domain-se
 /**
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
- * @param {string} projectId
- * @param {boolean} stateApprove
- * @param {ProjectStatusEditedEventPublisher} event
- * @param {IProjectDomainService} [service]
- * @return {Promise<ProjectDomainEntity>}
+ * @param {string} projectId // id del proyecto
+ * @param {boolean} stateApprove // estado de aprobación del proyecto
+ * @param {ProjectStatusEditedEventPublisher} event // evento de edición del estado de aprobación del proyecto
+ * @param {IProjectDomainService} [service] // servicio del dominio
+ * @return {Promise<ProjectDomainEntity>} // retorna la entidad del dominio
  */
 export const EditStateApproveHelper = async (
   projectId: string,

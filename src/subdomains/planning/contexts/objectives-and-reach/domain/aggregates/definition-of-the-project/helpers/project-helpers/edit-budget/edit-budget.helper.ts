@@ -5,11 +5,11 @@ import { IProjectDomainService } from '../../../../../services/proyect.domain-se
 /**
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
- * @param {string} projectId
- * @param {number} budget
- * @param {BudgetEditedEventPublisher} event
- * @param {IProjectDomainService} [service]
- * @return {Promise<ProjectDomainEntity>}
+ * @param {string} projectId // id del proyecto
+ * @param {number} budget // presupuesto del proyecto
+ * @param {BudgetEditedEventPublisher} event // evento de edición del presupuesto del proyecto
+ * @param {IProjectDomainService} [service] // servicio del dominio
+ * @return {Promise<ProjectDomainEntity>} // retorna la entidad del dominio
  */
 export const EditBudgetHelper = async (
   projectId: string,

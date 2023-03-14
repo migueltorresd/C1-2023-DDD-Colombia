@@ -1,8 +1,8 @@
 /**
  * Este metodo valida si es un valor booleano
  *
- * @param {*} value
- * @return {*}  {boolean}
+ * @param {boolean} value // valor a validar
+ * @return {boolean} // retorna true si es booleano
  */
 export const IsState = (value: any): boolean => {
   if (typeof value === 'boolean') {

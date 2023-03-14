@@ -1,37 +1,37 @@
-import { ProjectIdValueObject } from './project-id.value-object';
+import { ReachIdValueObject } from './reach-id.value-object';
 
-describe('ProjectIdValueObject', () => {
-  let objectValue: ProjectIdValueObject;
+describe('reachIdValueObject', () => {
+  let objectValue: ReachIdValueObject;
 
   beforeEach(() => {
     // Arrange y Act
-    objectValue = new ProjectIdValueObject(
+    objectValue = new ReachIdValueObject(
       '2f02db11-0e96-411a-9ba8-d32f77ce0636',
     );
   });
 
-  test('debería estar definido', () => {
+  test('should be defined', () => {
     // Assert
     expect(objectValue).toBeDefined();
   });
 });
-describe('Validaciones', () => {
-  test('si no le pasa un valor vacio me cre el uuid y no me da error', () => {
+describe('Validations', () => {
+  test('if you do not pass a value empty to me create the uuid and do not give me error', () => {
     // Arrange
     const UUID = '';
     const expected = false;
     // Act
-    const objectValue = new ProjectIdValueObject(UUID);
+    const objectValue = new ReachIdValueObject(UUID);
     const result = objectValue.hasErrors();
     // Assert
     expect(result).toBe(expected);
   });
-  test('si le paso un uuid no valido me da error o de una version anterior', () => {
+  test('if you pass an invalid uuid to me give error or an earlier version', () => {
     // Arrange
     const UUID = '32f6e43e-c1e4-11ed-afa1-0242ac120002';
     const expected = true;
     // Act
-    const objectValue = new ProjectIdValueObject(UUID);
+    const objectValue = new ReachIdValueObject(UUID);
     const result = objectValue.hasErrors();
     // Assert
     expect(result).toBe(expected);

@@ -4,9 +4,9 @@ import { ProjectDomainEntity } from '../../entities/project.domain-entity';
  * Interfaz que representa la respuesta de la consulta de un proyecto
  *
  * @export
- * @class IGetProjectResponse
+ * @Interface IGetProjectResponse // clase que representa la respuesta de la consulta de un proyecto
  */
-export class IGetProjectResponse {
-  public succes: boolean;
-  public data: ProjectDomainEntity | null;
+export interface IGetProjectResponse {
+  succes: boolean;
+  data: ProjectDomainEntity | null;
 }

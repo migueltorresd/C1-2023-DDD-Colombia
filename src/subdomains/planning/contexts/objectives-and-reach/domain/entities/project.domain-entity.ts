@@ -9,8 +9,8 @@ import { IProjectDomainInterface } from './interfaces/project.domain-entity.inte
  * Clase que representa la entidad de dominio de proyecto para eso implementa la interfaz IProjectDomainEntity
  *
  * @export
- * @class ProjectDomainEntity
- * @implements {IProjectDomainEntity}
+ * @class ProjectDomainEntity // clase que representa la entidad de dominio de proyecto
+ * @implements {IProjectDomainEntity} // implementa la interfaz IProjectDomainEntity
  */
 export class ProjectDomainEntity implements IProjectDomainInterface {
   projectId?: string | ProjectIdValueObject;
@@ -19,9 +19,9 @@ export class ProjectDomainEntity implements IProjectDomainInterface {
   StateApprove?: boolean | StateApproveObjectValue;
   definitionOfTheProject?: IDefinitionOfTheProjectDomainInterface;
   /**
-   * se crea una instancia de ProjectDomainEntity.
-   * @param {IProjectDomainInterface} [data]
-   * @memberof ProjectDomainEntity
+   * se crea una instancia de ProjectDomainEntity. // se crea una instancia de ProjectDomainEntity
+   * @param {IProjectDomainInterface} [data] // parámetro opcional de tipo IProjectDomainInterface
+   * @memberof ProjectDomainEntity // instancia de la clase ProjectDomainEntity
    */
   constructor(data?: IProjectDomainInterface) {
     if (data?.projectId) this.projectId = data.projectId;

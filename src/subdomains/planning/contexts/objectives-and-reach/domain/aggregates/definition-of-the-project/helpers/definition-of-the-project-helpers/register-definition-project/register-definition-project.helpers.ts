@@ -5,14 +5,14 @@ import { IDefinitionOfTheProjectDomainService } from "../../../../../services/de
 /**
  * Esta función es un helper que permite registrar una definición del proyecto
  *
- * @param {'string'} definitionId
- * @param {'string'} description
- * @param {true} stateApprove
- * @param {'Date'} dateStart
- * @param {'Date'} dateEnd
- * @param {RegistedDefinitionOfTheProjectEventPublisher} event
- * @param {DefinitionOfTheProjectDomainEntity} service
- * @return {Promise<DefinitionOfTheProjectDomainEntity>}
+ * @param {'string'} definitionId // id de la definición del proyecto
+ * @param {'string'} description // descripción del proyecto
+ * @param {true} stateApprove // estado de aprobación
+ * @param {'Date'} dateStart    // fecha de inicio del proyecto
+ * @param {'Date'} dateEnd // fecha de finalización del proyecto
+ * @param {RegistedDefinitionOfTheProjectEventPublisher} event // evento de registro de la definición del proyecto
+ * @param {DefinitionOfTheProjectDomainEntity} service // servicio del dominio
+ * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad del dominio
  */
 export const RegisterDefinitionProjectHelpers = async (
    entity: DefinitionOfTheProjectDomainEntity,

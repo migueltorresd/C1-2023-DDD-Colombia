@@ -5,11 +5,11 @@ import { IReachDomainService } from '../../../../../services/reach.domain-servic
 /**
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
- * @param {string} definitionId
- * @param {string} stateDefinition
- * @param {EditedStateDefinitionEventPublisher} event
- * @param {IReachDomainService} [service]
- * @return {Promise<ReachDomainEntity>}
+ * @param {string} definitionId //  id de la definición del alcance
+ * @param {string} stateDefinition // estado de la definición del alcance
+ * @param {EditedStateDefinitionEventPublisher} event // evento de edición del estado de la definición del alcance
+ * @param {IReachDomainService} [service] // servicio del dominio
+ * @return {Promise<ReachDomainEntity>} // retorna la entidad del dominio
  */
 export const EditStateDefinitionHelper = async (
   definitionId: string,

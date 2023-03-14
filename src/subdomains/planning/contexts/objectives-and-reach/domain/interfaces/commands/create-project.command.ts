@@ -1,7 +1,7 @@
 /**
  * Esta interface representa el comando de creación de una definicion de proyecto
  * @export
- * @interface ICreateProjecCommand
+ * @interface ICreateProjecCommand // esta interface representa el comando de creación de una definicion de proyecto
  */
 export interface ICreateProjecCommand {
   definitionId: string;

@@ -1,12 +1,12 @@
-import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
-import { DateAboveCurrent } from 'src/shared/validations/is-date.validation';
+import { DateAboveCurrent } from '@validations';
+import { IErrorValueObject, ValueObjectBase } from '@sofka';
 
 /**
  * Esta clase valida si es un valor de tipo Date y que sea mayor a la fecha actual
  *
  * @export
- * @class DateStartObjectValue
- * @extends {ValueObjectBase<Date>}
+ * @class DateStartObjectValue // extiende de ValueObjectBase<Date> para que solo acepte valores Date
+ * @extends {ValueObjectBase<Date>} // extiende de ValueObjectBase<Date> para que solo acepte valores Date
  */
 export class DateStartObjectValue extends ValueObjectBase<Date> {
   validateData(): void {
@@ -16,6 +16,12 @@ export class DateStartObjectValue extends ValueObjectBase<Date> {
     super(value ? value : new Date());
   }
 
+  /**
+   * Este metodo valida si es un valor Date y que sea mayor a la fecha actual
+   *
+   * @private
+   * @memberof DateStartObjectValue // extiende de ValueObjectBase<Date> para que solo acepte valores Date
+   */
   private dateAboveCurrent(): void {
     if (DateAboveCurrent(this.value)) {
       this.setError({

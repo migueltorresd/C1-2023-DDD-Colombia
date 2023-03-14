@@ -4,7 +4,7 @@ import { DefinitionOfTheProjectDomainEntity } from '../../entities/definition-of
  * Esta interface representa la respuesta de la creación de un proyecto
  *
  * @export
- * @interface ICreateProjectResponse
+ * @interface ICreateProjectResponse // esta interface representa la respuesta de la creación de un proyecto
  */
 export interface ICreateProjectResponse {
   succes: boolean;

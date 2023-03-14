@@ -1,13 +1,27 @@
-import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
-import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { StringMaxLength } from 'src/shared/validations/string-max-length/string-max-length.validation';
-import { StringMinLength } from 'src/shared/validations/string-min-length/string-min-length.validation';
+import { IsEmpty } from '@validations';
+import { IErrorValueObject, ValueObjectBase } from '@sofka';
 
+import { StringMaxLength } from '@validations';
+import { StringMinLength } from '@validations';
+
+/**
+ * Clase base para los value objects de tipo string
+ *
+ * @export
+ * @abstract
+ * @class StringValueobjectBase
+ * @extends {ValueObjectBase<string>} // extiende de ValueObjectBase<string> para que solo acepte valores string
+ */
 export abstract class StringValueobjectBase extends ValueObjectBase<string> {
   abstract field(): string;
   constructor(value: string) {
     super(value);
   }
+  /**
+   * Este metodo valida si es un valor string
+   *
+   * @memberof StringValueobjectBase
+   */
   validateData(): void {
     if (this.value) {
       this.isEmpty();

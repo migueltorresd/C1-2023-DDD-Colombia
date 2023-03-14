@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { DefinitionProjectIdValueObject } from './subdomains/planning/contexts/objectives-and-reach/domain/value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
-import { DefinitionValueObject } from './subdomains/planning/contexts/objectives-and-reach/domain/value-objects/reach/definition/definition.value-object';
+import { DefinitionOfTheProjectAggregate } from './subdomains/planning/contexts/objectives-and-reach/domain/aggregates/definition-of-the-project';
 
 @Module({
   imports: [],
   controllers: [],
-  providers: [DefinitionValueObject, DefinitionProjectIdValueObject],
+  providers: [DefinitionOfTheProjectAggregate],
 })
 export class AppModule {}

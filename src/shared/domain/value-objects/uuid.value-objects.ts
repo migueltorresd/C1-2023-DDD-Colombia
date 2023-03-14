@@ -1,7 +1,15 @@
-import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
-import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { IsUUID4 } from 'src/shared/validations/is-uuid/is-uuid-4.validation';
+import { IsEmpty } from '@validations';
+import { IErrorValueObject, ValueObjectBase } from '@sofka';
+import { IsUUID4 } from '@validations';
 
+/**
+ * Clase base para los value objects de tipo uuid
+ *
+ * @export
+ * @abstract
+ * @class UUIDValueObjectBase
+ * @extends {ValueObjectBase<string>} // extiende de ValueObjectBase<string> para que solo acepte valores string
+ */
 export abstract class UUIDValueObjectBase extends ValueObjectBase<string> {
   abstract field(): string;
   constructor(value: string) {

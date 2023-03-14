@@ -68,7 +68,18 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "/index\\.ts$"
-    ]
+      "/node_modules/",
+      "/test/",
+      "<rootDir>/main.ts",
+      "<rootDir>/app.module.ts",
+      "/index\\.ts$"    ],
+    "moduleNameMapper": {
+      "^@validations(.*)$": "<rootDir>/shared/validations$1",
+      "^@ValueObjectBase(.*)$": "<rootDir>/shared/domain/value-object$1",
+      "^@context/planning/domain(.*)$": "<rootDir>/subdomains/planning/contexts/product/domain$1",
+      "^@context/planning/applications(.*)$": "<rootDir>/subdomains/planning/contexts/product/application$1",
+      "^@context/planning/infrastructure(.*)$": "<rootDir>/subdomains/planning/contexts/product/infrastructure$1",
+      "^@sofka(.*)$": "<rootDir>/shared/sofka$1"
+    }
   }
 }

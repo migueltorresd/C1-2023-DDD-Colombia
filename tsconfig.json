@@ -20,9 +20,10 @@
     "paths": {
       "@validations": ["./src/shared/validations"],
       "@ValueObjectBase": ["./src/shared/domain/value-object"],
-      "@context/product/domain": ["./src/subdomains/commodity/contexts/planning/domain"],
-      "@context/product/applications": ["./src/subdomains/commodity/contexts/planning/application"],
-      "@context/product/infrastructure": ["./src/subdomains/commodity/contexts/planning/infrastructure"],
+      "@context/planning/domain": ["./src/subdomains/commodity/contexts/planning/domain"],
+      "@context/planning/applications": ["./src/subdomains/commodity/contexts/planning/application"],
+      "@context/planning/infrastructure": ["./src/subdomains/commodity/contexts/planning/infrastructure"],
+      "@sofka": ["./src/shared/sofka"],
     },
   }
 }

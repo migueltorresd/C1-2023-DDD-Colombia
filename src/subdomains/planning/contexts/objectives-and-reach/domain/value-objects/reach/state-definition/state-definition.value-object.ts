@@ -1,11 +1,11 @@
-import { StateValueobjectBase } from 'src/shared/domain/value-objects/state.value-objects';
+import { StateValueobjectBase } from '../../../../../../../../shared/domain/value-objects/state.value-objects';
 
 /**
  *  Esta clase extiende de una clase base que Valida si es un valor booleano
  *
  * @export
  * @class StateDefinitionValueObject
- * @extends {StateValueobjectBase}
+ * @extends {StateValueobjectBase} // extiende de StateValueobjectBase para que solo acepte valores boolean
  */
 export class StateDefinitionValueObject extends StateValueobjectBase {
   field(): string {

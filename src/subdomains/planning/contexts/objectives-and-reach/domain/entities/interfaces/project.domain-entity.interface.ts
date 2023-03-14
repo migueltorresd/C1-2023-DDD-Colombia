@@ -8,7 +8,7 @@ import { IDefinitionOfTheProjectDomainInterface } from './definition-of-the-proj
  * Interfaz que representa la entidad de dominio de proyecto
  *
  * @export
- * @interface IProjectDomainInterface
+ * @interface IProjectDomainInterface // interfaz que representa la entidad de dominio de proyecto
  */
 export interface IProjectDomainInterface {
   projectId?: string | ProjectIdValueObject;

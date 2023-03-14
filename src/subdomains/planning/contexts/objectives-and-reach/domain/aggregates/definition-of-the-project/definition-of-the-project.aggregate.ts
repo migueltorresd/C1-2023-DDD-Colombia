@@ -67,6 +67,7 @@ export class DefinitionOfTheProjectAggregate
 
   /**
    * Crea una instancia de DefinitionOfTheProjectAggregate.
+   * se encarga de la logica de negocio de los agregados
    * @param {{
    *     reachService: IReachDomainService;
    *     projectService: IProjectDomainService;
@@ -217,12 +218,12 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función CreateReachHelper
    *
-   * @param {string} definitionId
-   * @param {string} definition
-   * @param {string} prioritize
-   * @param {string} stateDefinition
-   * @return {Promise<ReachDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} definition // definición del proyecto
+   * @param {string} prioritize // prioridad
+   * @param {string} stateDefinition // estado de la definición
+   * @return {Promise<ReachDomainEntity>} // retorna la entidad de dominio de alcance
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   createReach(
     definitionId: string,
@@ -242,10 +243,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDefinitionHelper
    *
-   * @param {string} definitionId
-   * @param {string} definition
-   * @return {Promise<ReachDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId// id de la definición del proyecto
+   * @param {string} definition// definición del proyecto
+   * @return {Promise<ReachDomainEntity>}// retorna la entidad de dominio de alcance
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editDefinition(
     definitionId: string,
@@ -261,10 +262,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditPrioritizeHelper
    *
-   * @param {string} definitionId
-   * @param {string} prioritize
-   * @return {Promise<ReachDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} prioritize // prioridad de la definición del proyecto
+   * @return {Promise<ReachDomainEntity>} // retorna la entidad de dominio de alcance
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editPrioritize(
     definitionId: string,
@@ -280,10 +281,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateDefinitionHelper
    *
-   * @param {string} definitionId
-   * @param {string} stateDefinition
-   * @return {Promise<ReachDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} stateDefinition // estado de la definición del proyecto
+   * @return {Promise<ReachDomainEntity>} // retorna la entidad de dominio de alcance
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editStateDefinition(
     definitionId: string,
@@ -299,13 +300,11 @@ export class DefinitionOfTheProjectAggregate
   // project --------------------------------------
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función createProjectHelper
-   *
-   * @param {string} projectId
-   * @param {string} name
-   * @param {number} budget
-   * @param {boolean} stateApprove
-   * @return {Promise<ProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} name // nombre del proyecto
+   * @param {number} budget // presupuesto del proyecto
+   * @param {boolean} stateApprove // estado de aprobación del proyecto
+   * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   createProject(
     projectId: string,
@@ -325,10 +324,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
    *
-   * @param {string} projectId
-   * @param {number} budget
-   * @return {Promise<ProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} projectId // id del proyecto
+   * @param {number} budget // presupuesto del proyecto
+   * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editBudget(projectId: string, budget: number): Promise<ProjectDomainEntity> {
     return EditBudgetHelper(
@@ -341,10 +340,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
    *
-   * @param {string} projectId
-   * @param {string} name
-   * @return {*}  {Promise<ProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} projectId // id del proyecto
+   * @param {string} name // nombre del proyecto
+   * @return {Promise<ProjectDomainEntity>} //
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editName(projectId: string, name: string): Promise<ProjectDomainEntity> {
     return EditNameHelper(
@@ -357,10 +356,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateApproveHelper
    *
-   * @param {string} projectId
-   * @param {boolean} stateApprove
-   * @return {Promise<ProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} projectId // id del proyecto
+   * @param {boolean} stateApprove // estado de aprobación del proyecto
+   * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editStateApprove(
     projectId: string,
@@ -376,12 +375,12 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditNameHelper
    *
-   * @param {string} projectId
-   * @param {string} name
-   * @param {number} budget
-   * @param {boolean} stateApprove
-   * @return {Promise<ProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} projectId // id del proyecto
+   * @param {string} name // nombre del proyecto
+   * @param {number} budget // presupuesto del proyecto
+   * @param {boolean} stateApprove // estado de aprobación del proyecto
+   * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   getProjectById(
     projectId: string,
@@ -402,10 +401,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función createDescripcionProjectHelper
    *
-   * @param {string} definitionId
-   * @param {string} description
-   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} description // descripción del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   createDescripcionProject(
     definitionId: string,
@@ -421,10 +420,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDescripcionProjectHelper
    *
-   * @param {string} definitionId
-   * @param {string} description
-   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} description // descripción del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editDescripcionProject(
     definitionId: string,
@@ -440,10 +439,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditStateApproveProjectHelper
    *
-   * @param {string} definitionId
-   * @param {boolean} stateApprove
-   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {boolean} stateApprove // estado de aprobación del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editStateApproveProject(
     definitionId: string,
@@ -460,10 +459,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
    *
-   * @param {string} definitionId
-   * @param {string} dateEnd
-   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} dateEnd // fecha de finalización del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   addDateEnd(
     definitionId: string,
@@ -479,10 +478,10 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
    *
-   * @param {string} definitionId
-   * @param {string} dateEnd
-   * @return {*}  {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} dateEnd // fecha de finalización del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>}// retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   editDateEnd(
     definitionId: string,
@@ -498,13 +497,13 @@ export class DefinitionOfTheProjectAggregate
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
    *
-   * @param {string} definitionId
-   * @param {string} description
-   * @param {string} stateApprove
-   * @param {Date} dateStart
-   * @param {Date} dateEnd
-   * @return {Promise<DefinitionOfTheProjectDomainEntity>}
-   * @memberof DefinitionOfTheProjectAggregate
+   * @param {string} definitionId // id de la definición del proyecto
+   * @param {string} description // descripción del proyecto
+   * @param {string} stateApprove // estado de aprobación del proyecto
+   * @param {Date} dateStart // fecha de inicio del proyecto
+   * @param {Date} dateEnd // fecha de finalización del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
   registerDefinitionProject(
     entity: DefinitionOfTheProjectDomainEntity,

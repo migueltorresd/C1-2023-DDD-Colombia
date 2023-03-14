@@ -5,11 +5,11 @@ import { IDefinitionOfTheProjectDomainService } from '../../../../../services/de
 /**
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
- * @param {string} projectId
- * @param {string} description
- * @param {ProjectDescriptionCreatedEventPublisher} event
- * @param {IDefinitionOfTheProjectDomainService} [service]
- * @return {Promise<DefinitionOfTheProjectDomainEntity>}
+ * @param {string} projectId // id del proyecto
+ * @param {string} description // descripción del proyecto
+ * @param {ProjectDescriptionCreatedEventPublisher} event // evento de creación de la descripción del proyecto
+ * @param {IDefinitionOfTheProjectDomainService} [service] // servicio del dominio
+ * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad del dominio
  */
 export const createDescripcionProjectHelper = async (
   projectId: string,

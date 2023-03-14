@@ -8,8 +8,8 @@ import { IReachDomainInterface } from './interfaces/reach.domain-entity.interfac
  * Clase que representa la entidad de dominio de alcance para esto implementa la interfaz IReachDomainEntity
  *
  * @export
- * @class ReachDomainEntity
- * @implements {IReachDomainInterface}
+ * @class ReachDomainEntity // clase que representa la entidad de dominio de alcance
+ * @implements {IReachDomainInterface} // implementa la interfaz IReachDomainInterface
  */
 export class ReachDomainEntity implements IReachDomainInterface {
   reachId?: string | ReachIdValueObject;
@@ -19,8 +19,8 @@ export class ReachDomainEntity implements IReachDomainInterface {
   definitionOfTheProject?: IDefinitionOfTheProjectDomainInterface;
   /**
    * se crea la instancia de ReachDomainEntity.
-   * @param {IReachDomainInterface} [data]
-   * @memberof ReachDomainInterface
+   * @param {IReachDomainInterface} [data] // parámetro opcional de tipo IReachDomainInterface
+   * @memberof ReachDomainInterface //  instancia de la clase ReachDomainInterface
    */
   constructor(data?: IReachDomainInterface) {
     if (data?.reachId) this.reachId = data.reachId;

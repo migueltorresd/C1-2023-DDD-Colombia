@@ -9,7 +9,7 @@ import { IProjectDomainInterface } from './project.domain-entity.interface';
  * Interfaz que representa la entidad de dominio de definición del proyecto
  *
  * @export
- * @interface IDefinitionOfTheProjectDomainInterface
+ * @interface IDefinitionOfTheProjectDomainInterface // interfaz que representa la entidad de dominio de definición del proyecto
  */
 export interface IDefinitionOfTheProjectDomainInterface {
   definitionId?: string | DefinitionProjectIdValueObject;

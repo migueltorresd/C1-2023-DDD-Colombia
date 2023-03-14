@@ -6,9 +6,9 @@ import { ProjectDomainEntity } from '../../../entities/project.domain-entity';
  *
  * @export
  * @abstract
- * @class NameEditedEventPublisher
- * @extends {EventPublisherBase<Response>}
- * @template Response
+ * @class NameEditedEventPublisher // clase que publica el evento de edición de un nombre
+ * @extends {EventPublisherBase<Response>} // extiende de la clase base de publicador de eventos
+ * @template Response // extiende de la respuesta de la entidad de dominio de proyecto
  */
 export abstract class NameEditedEventPublisher<
   Response = ProjectDomainEntity,

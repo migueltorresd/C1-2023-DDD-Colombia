@@ -6,9 +6,9 @@ import { DefinitionOfTheProjectDomainEntity } from '../../../entities/definition
  *
  * @export
  * @abstract
- * @class ProjectDescriptionCreatedEventPublisher
- * @extends {EventPublisherBase<Response>}
- * @template Response
+ * @class ProjectDescriptionCreatedEventPublisher // clase que publica el evento de creación de un proyecto
+ * @extends {EventPublisherBase<Response>} // extiende de la clase base de publicador de eventos
+ * @template Response // extiende de la respuesta de la entidad de dominio de definición del proyecto
  */
 export abstract class ProjectDescriptionCreatedEventPublisher<
   Response = DefinitionOfTheProjectDomainEntity,

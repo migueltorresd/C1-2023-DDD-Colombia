@@ -12,8 +12,8 @@ import { ReachDomainEntity } from './reach.domain-entity';
  * Esta clase que representa la entidad de dominio de definición del proyecto para esto implementa la Interface correspondiente
  *
  * @export
- * @class DefinitionOfTheProjectDomainEntity
- * @implements {IDefinitionOfTheProjectDomainInterface}
+ * @class DefinitionOfTheProjectDomainEntity // clase que representa la entidad de dominio de definición del proyecto
+ * @implements {IDefinitionOfTheProjectDomainInterface} // implementa la interface correspondiente
  */
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainInterface
@@ -27,9 +27,9 @@ export class DefinitionOfTheProjectDomainEntity
   projects?: ProjectDomainEntity[];
 
   /**
-   * crea una instancia de la clase DefinitionOfTheProjectDomainEntity.
-   * @param {IDefinitionOfTheProjectDomainInterface} [data]
-   * @memberof DefinitionOfTheProjectDomainEntity
+   * crea una instancia de la clase DefinitionOfTheProjectDomainEntity. // crea una instancia de la clase DefinitionOfTheProjectDomainEntity
+   * @param {IDefinitionOfTheProjectDomainInterface} [data] // parámetro opcional de tipo IDefinitionOfTheProjectDomainInterface
+   * @memberof DefinitionOfTheProjectDomainEntity // instancia de la clase DefinitionOfTheProjectDomainEntity
    */
   constructor(data?: IDefinitionOfTheProjectDomainInterface) {
     if (data?.definitionId) this.definitionId = data.definitionId;

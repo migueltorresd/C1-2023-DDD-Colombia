@@ -5,13 +5,13 @@ import { IProjectDomainService } from '../../../../../services/proyect.domain-se
 /**
  * validar que el evento no sea nulo y que el servicio no sea nulo
  *
- * @param {string} projectId
- * @param {string} name
- * @param {number} budget
- * @param {boolean} stateApprove
- * @param {ProjectCreatedEventPublisher} event
- * @param {IProjectDomainService} [service]
- * @return {Promise<ProjectDomainEntity>}
+ * @param {string} projectId // id del proyecto
+ * @param {string} name // nombre del proyecto
+ * @param {number} budget // presupuesto del proyecto
+ * @param {boolean} stateApprove // estado de aprobación del proyecto
+ * @param {ProjectCreatedEventPublisher} event // evento de creación del proyecto
+ * @param {IProjectDomainService} [service] // servicio del dominio
+ * @return {Promise<ProjectDomainEntity>} // retorna la entidad del dominio
  */
 export const createProjectHelper = async (
   projectId: string,

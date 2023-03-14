@@ -1,13 +1,25 @@
-import { IErrorValueObject, ValueObjectBase } from 'src/shared/sofka';
-import { IsEmpty } from 'src/shared/validations/is-empty.validation';
-import { IsState } from 'src/shared/validations/is-state/is-state.validation';
+import { IsEmpty, IsState } from '@validations';
+import { IErrorValueObject, ValueObjectBase } from '@sofka';
 
+/**
+ * Clase base para los value objects de tipo estado
+ *
+ * @export
+ * @abstract
+ * @class StateValueobjectBase
+ * @extends {ValueObjectBase<boolean>} // extiende de ValueObjectBase<boolean> para que solo acepte valores booleanos
+ */
 export abstract class StateValueobjectBase extends ValueObjectBase<boolean> {
   abstract field(): string;
   constructor(value: boolean) {
     super(value);
   }
 
+  /**
+   * Este metodo valida si es un valor booleano
+   *
+   * @memberof StateValueobjectBase
+   */
   validateData(): void {
     if (this.value) {
       this.isEmpty();

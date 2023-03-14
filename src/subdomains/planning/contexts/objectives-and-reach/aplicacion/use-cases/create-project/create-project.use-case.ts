@@ -2,7 +2,7 @@ import {
   IUseCase,
   ValueObjectErrorHandler,
   ValueObjectException,
-} from 'src/shared/sofka';
+} from '@sofka';
 import { DefinitionOfTheProjectAggregate } from '../../../domain/aggregates/definition-of-the-project/definition-of-the-project.aggregate';
 import { RegistedDefinitionOfTheProjectEventPublisher } from '../../../domain/events/publishers/definition-of-the-project/registed-definition-of-the-project.event-publisher';
 import { ICreateProjecCommand } from '../../../domain/interfaces/commands/create-project.command';
