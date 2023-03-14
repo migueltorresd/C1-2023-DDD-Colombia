@@ -18,8 +18,8 @@ import { StateApproveObjectValue } from '../../../domain/value-objects/proyect/s
  *
  * @export
  * @class GetProjectUseCase
- * @extends {ValueObjectErrorHandler}
- * @implements {IUseCase<IGetProjectCommand, IGetProjectResponse>}
+ * @extends {ValueObjectErrorHandler} // se extiende para poder manejar los errores de los value objects
+ * @implements {IUseCase<IGetProjectCommand, IGetProjectResponse>} // se implementa para poder usar el metodo execute
  */
 export class GetProjectUseCase
   extends ValueObjectErrorHandler
@@ -37,6 +37,13 @@ export class GetProjectUseCase
       projectObtainedEventPublisher,
     });
   }
+  /**
+   * Metodo para ejecutar el caso de uso
+   *
+   * @param {IGetProjectCommand} command // comando para obtener un proyecto
+   * @return {*}  {Promise<IGetProjectResponse>} // respuesta del caso de uso
+   * @memberof GetProjectUseCase // se implementa para poder usar el metodo execute
+   */
   async execute(command: IGetProjectCommand): Promise<IGetProjectResponse> {
     const projectId = new ProjectIdValueObject(command.projectId);
     const name = new NameObjectValue(command.name);

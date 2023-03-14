@@ -14,6 +14,6 @@ export interface IReachDomainInterface {
   reachId?: string | ReachIdValueObject;
   definition?: string | DefinitionValueObject;
   prioritize?: string | PrioritizeValueObject;
-  stateDefinition?: string | StateDefinitionValueObject;
+  stateDefinition?: boolean | StateDefinitionValueObject;
   definitionOfTheProject?: IDefinitionOfTheProjectDomainInterface;
 }

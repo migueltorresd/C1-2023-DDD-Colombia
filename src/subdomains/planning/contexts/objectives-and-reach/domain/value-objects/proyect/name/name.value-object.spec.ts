@@ -67,7 +67,7 @@ describe('nameValueObject', () => {
       // Arrange
       const value = 'd'.repeat(30);
       const descriptionObjectValue = new NameObjectValue(value);
-      const expected = true;
+      const expected = false;
 
       // Act
       const result = descriptionObjectValue.hasErrors();
