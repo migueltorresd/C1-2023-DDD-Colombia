@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { ProjectEntity } from '../entities/project.entity';
+import { ReachEntity } from '../entities/reach.entity';
 
 /**
  * esta clase es la que se encarga de configurar la conexión a la base de datos
@@ -21,7 +23,7 @@ export class TypeOrmPostgresConfigService implements TypeOrmOptionsFactory {
       username: this.configService.get<string>('DB_USER'),
       password: this.configService.get<string>('DB_PASSWORD'),
       database: this.configService.get<string>('DB_NAME'),
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      entities: [ReachEntity, ProjectEntity],
       synchronize: true,
       logging: true,
     };

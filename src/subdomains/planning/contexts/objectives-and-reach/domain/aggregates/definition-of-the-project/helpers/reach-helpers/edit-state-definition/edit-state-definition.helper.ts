@@ -13,7 +13,7 @@ import { IReachDomainService } from '../../../../../services/reach.domain-servic
  */
 export const EditStateDefinitionHelper = async (
   definitionId: string,
-  stateDefinition: string,
+  stateDefinition: boolean,
   event: EditedStateDefinitionEventPublisher,
   service?: IReachDomainService,
 ): Promise<ReachDomainEntity> => {

@@ -221,7 +221,7 @@ export class DefinitionOfTheProjectAggregate
    * @param {string} definitionId // id de la definición del proyecto
    * @param {string} definition // definición del proyecto
    * @param {string} prioritize // prioridad
-   * @param {string} stateDefinition // estado de la definición
+   * @param {boolean} stateDefinition // estado de la definición
    * @return {Promise<ReachDomainEntity>} // retorna la entidad de dominio de alcance
    * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
@@ -229,7 +229,7 @@ export class DefinitionOfTheProjectAggregate
     definitionId: string,
     definition: string,
     prioritize: string,
-    stateDefinition: string,
+    stateDefinition: boolean,
   ): Promise<ReachDomainEntity> {
     return CreateReachHelper(
       definitionId,
@@ -288,7 +288,7 @@ export class DefinitionOfTheProjectAggregate
    */
   editStateDefinition(
     definitionId: string,
-    stateDefinition: string,
+    stateDefinition: boolean,
   ): Promise<ReachDomainEntity> {
     return EditStateDefinitionHelper(
       definitionId,

@@ -8,7 +8,7 @@ import { IReachDomainService } from '../../../../../services/reach.domain-servic
  * @param {string} definitionId //  id de la definición del alcance
  * @param {string} definition // definición del alcance
  * @param {string} prioritize // prioridad del alcance
- * @param {string} stateDefinition // estado de la definición del alcance
+ * @param {boolean} stateDefinition // estado de la definición del alcance
  * @param {ReachOfTheProjectCreatedEventPublisher} event // evento de creación del alcance del proyecto
  * @param {IReachDomainService} [service] // servicio del dominio
  * @return {Promise<ReachDomainEntity>} // retorna la entidad del dominio
@@ -17,7 +17,7 @@ export const CreateReachHelper = async (
   definitionId: string,
   definition: string,
   prioritize: string,
-  stateDefinition: string,
+  stateDefinition: boolean,
   event: ReachOfTheProjectCreatedEventPublisher,
   service?: IReachDomainService,
 ): Promise<ReachDomainEntity> => {

@@ -18,13 +18,13 @@ import { ReachDomainEntity } from './reach.domain-entity';
 export class DefinitionOfTheProjectDomainEntity
   implements IDefinitionOfTheProjectDomainInterface
 {
-  definitionId?: string | DefinitionProjectIdValueObject;
-  description?: string | DescriptionObjectValue;
-  stateApprove?: boolean | StateApproveObjectValue;
-  dateEnd?: Date | DateEndObjectValue;
-  dateStart?: Date | DateStartObjectValue;
-  reachs?: ReachDomainEntity[];
-  projects?: ProjectDomainEntity[];
+  definitionId: string | DefinitionProjectIdValueObject;
+  description: string | DescriptionObjectValue;
+  stateApprove: boolean | StateApproveObjectValue;
+  dateEnd: Date | DateEndObjectValue;
+  dateStart: Date | DateStartObjectValue;
+  reachs: ReachDomainEntity[];
+  projects: ProjectDomainEntity[];
 
   /**
    * crea una instancia de la clase DefinitionOfTheProjectDomainEntity. // crea una instancia de la clase DefinitionOfTheProjectDomainEntity

@@ -21,10 +21,10 @@ export interface IProjectDomainService<
    * @memberof IProyectDomainService // este metodo es el que se usa para crear un proyecto
    */
   createProject(
-    projectId?: string,
-    name?: string,
-    budget?: number,
-    stateApprove?: boolean,
+    projectId: string,
+    name: string,
+    budget: number,
+    stateApprove: boolean,
   ): Promise<Entity>;
   /**
    * Edita el nombre del proyecto
@@ -34,7 +34,7 @@ export interface IProjectDomainService<
    * @return {Promise<Entity>} // retorna una entidad de dominio de proyecto
    * @memberof IProyectDomainService // este metodo es el que se usa para editar el nombre del proyecto
    */
-  editName(projectId?: string, name?: string): Promise<Entity>;
+  editName(projectId: string, name: string): Promise<Entity>;
   /**
    * Edita el presupuesto del proyecto
    *
@@ -43,7 +43,7 @@ export interface IProjectDomainService<
    * @return {Promise<Entity>} // retorna una entidad de dominio de proyecto
    * @memberof IProyectDomainService // este metodo es el que se usa para editar el presupuesto del proyecto
    */
-  editBudget(projectId?: string, budget?: number): Promise<Entity>;
+  editBudget(projectId: string, budget: number): Promise<Entity>;
   /**
    * Edita el estado de aprobación del proyecto
    *
@@ -52,7 +52,7 @@ export interface IProjectDomainService<
    * @return {Promise<Entity>} // retorna una entidad de dominio de proyecto
    * @memberof IProyectDomainService // este metodo es el que se usa para editar el estado de aprobación del proyecto
    */
-  editStateApprove(projectId?: string, stateApprove?: boolean): Promise<Entity>;
+  editStateApprove(projectId: string, stateApprove: boolean): Promise<Entity>;
   /**
    * Obtiene un proyecto por su id
    *
@@ -64,9 +64,9 @@ export interface IProjectDomainService<
    * @memberof IProyectDomainService // este metodo es el que se usa para obtener un proyecto por su id
    */
   getProjectById(
-    projectId?: string,
-    name?: string,
-    budget?: number,
-    stateApprove?: boolean,
+    projectId: string,
+    name: string,
+    budget: number,
+    stateApprove: boolean,
   ): Promise<Entity>;
 }
