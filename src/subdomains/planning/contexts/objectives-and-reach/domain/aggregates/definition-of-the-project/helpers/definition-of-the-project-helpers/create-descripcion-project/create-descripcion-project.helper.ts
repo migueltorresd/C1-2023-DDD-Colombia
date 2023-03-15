@@ -19,10 +19,7 @@ export const createDescripcionProjectHelper = async (
 ): Promise<DefinitionOfTheProjectDomainEntity> => {
   if (!event) throw new Error('El evento no está definido');
   if (!service) throw new Error(' El servicio no está definido');
-  event.response = await service.createDescripcionProject(
-    projectId,
-    description,
-  );
+  event.response = await service.editDescripcionProject(projectId, description);
   event.publish();
   return event.response;
 };
