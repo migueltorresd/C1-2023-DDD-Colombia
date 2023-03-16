@@ -2,7 +2,7 @@ import { IDefinitionOfTheProjectDomainService } from 'src/subdomains/planning/co
 import { DefinitionOfTheProjectPostgresEntity } from '../entities/definition-of-the-project-postgres.entity';
 import { DefinitionOfTheProjectRepository } from '../repositories/definition-of-the-project.repository';
 
-export class DefinitionOfTheProjectService
+export class DefinitionOfTheProjectPostgresService
   implements
     IDefinitionOfTheProjectDomainService<DefinitionOfTheProjectPostgresEntity>
 {

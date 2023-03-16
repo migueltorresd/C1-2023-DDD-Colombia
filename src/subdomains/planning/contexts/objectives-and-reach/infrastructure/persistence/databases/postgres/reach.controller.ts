@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ReachPostgresEntity } from '../persistence/databases/postgres/entities/reach-postgres.entity';
-import { ReachPostgresService } from '../persistence/databases/postgres/services/reach-postgres.service';
+import { ReachPostgresEntity } from './entities/reach-postgres.entity';
+import { ReachPostgresService } from './services/reach-postgres.service';
 
 @Controller('reach')
 export class ReachController {

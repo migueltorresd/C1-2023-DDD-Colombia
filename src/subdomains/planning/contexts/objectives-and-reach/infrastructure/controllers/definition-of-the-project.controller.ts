@@ -1,69 +1,35 @@
-// import { Body, Controller, Get, Post } from '@nestjs/common';
-// import { ConfigService } from '@nestjs/config';
-// import { DefinitionOfTheProjectEntity } from '../persistence/databases/postgres/entities/definition-of-the-project.entity';
-// import { DefinitionOfTheProjectService } from '../persistence/databases/postgres/services/definition-of-the-project.service';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreateProjectUseCase } from '../../aplicacion/use-cases/create-project/create-project.use-case';
+import { RegistedDefinitionOfTheProjectPublisher } from '../messaging/publisher/registed-definition-of-the-project.publisher';
+import { DefinitionOfTheProjectService } from '../persistence/services/definition-of-the-project.service';
+import { CreateProjectCommand } from '../utils/commands/create-project.command';
 
-// @Controller('definition-of-the-project')
-// export class DefinitionOfTheProjectController {
-//   constructor(
-//     private readonly configService: ConfigService,
-//     private readonly definitionOfTheProjectService: DefinitionOfTheProjectService,
-//   ) {}
+/**
+ * este controlador es el encargado de recibir las peticiones http
+ *
+ * @export
+ * @class DefinitionOfTheProjectController
+ */
+@Controller('definition-of-the-project')
+export class DefinitionOfTheProjectController {
+  constructor(
+    private readonly definitionOfTheProjectService: DefinitionOfTheProjectService,
+    private readonly definitionOfTheProjectPublisher: RegistedDefinitionOfTheProjectPublisher,
+  ) {}
 
-//   @Post('register')
-//   registerDefinitionProject(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.registerDefinitionProject(
-//     );
-//   }
-
-//   @Post('edit-description')
-//   editDescription(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.editDescription(
-//       definitionOfTheProject.definitionOfTheProjectId,
-//       definitionOfTheProject.description,
-//     );
-//   }
-//   @Post('edit-state-approve')
-//   editStateApprove(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.editStateApprove(
-//       definitionOfTheProject.definitionOfTheProjectId,
-//       definitionOfTheProject.stateApprove,
-//     );
-//   }
-
-//   @Post('edit-date-start')
-//   editDateStart(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.editDateStart(
-//       definitionOfTheProject.definitionOfTheProjectId,
-//       definitionOfTheProject.dateStart,
-//     );
-//   }
-
-//   @Post('edit-date-end')
-//   editDateEnd(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.editDateEnd(
-//       definitionOfTheProject.definitionOfTheProjectId,
-//       definitionOfTheProject.dateEnd,
-//     );
-//   }
-
-//   @Get('project-by-id')
-//   getDefinitionOfTheProjectById(
-//     @Body() definitionOfTheProject: DefinitionOfTheProjectEntity,
-//   ): Promise<DefinitionOfTheProjectEntity> {
-//     return this.definitionOfTheProjectService.getDefinitionOfTheProjectById(
-//       definitionOfTheProject.definitionOfTheProjectId,
-//     );
-//   }
-
-// }
+  /**
+   * este metodo es el encargado de recibir la peticion http
+   *
+   * @param {CreateProjectCommand} command // se le pasa el comando
+   * @return {Promise<any>}  // retorna la respuesta
+   * @memberof DefinitionOfTheProjectController
+   */
+  @Post()
+  async create(@Body() command: CreateProjectCommand) {
+    const useCase = new CreateProjectUseCase(
+      this.definitionOfTheProjectService,
+      this.definitionOfTheProjectPublisher,
+    );
+    return await useCase.execute(command);
+  }
+}

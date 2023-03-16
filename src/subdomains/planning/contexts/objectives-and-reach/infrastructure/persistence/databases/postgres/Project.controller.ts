@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ProjectPostgresEntity } from '../persistence/databases/postgres/entities/project-postgres.entity';
-import { ProjectPostgresService } from '../persistence/databases/postgres/services/project-postgres.service';
+import { ProjectPostgresEntity } from './entities/project-postgres.entity';
+import { ProjectPostgresService } from './services/project-postgres.service';
 
 @Controller('project')
 export class ProjectController {

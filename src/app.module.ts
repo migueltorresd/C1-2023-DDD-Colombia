@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'node:path';
-import { ProjectController } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/controllers/Project.controller';
-import { ReachController } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/controllers/reach.controller';
+import { ProjectController } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/persistence/databases/postgres/Project.controller';
+import { ReachController } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/persistence/databases/postgres/reach.controller';
 import { PostgreSQLModule } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/persistence/databases/postgres/postgresql.module';
-
+import { APP_FILTER } from '@nestjs/core';
+import { ObjectValueExceptionFilter } from './subdomains/planning/contexts/objectives-and-reach/infrastructure/utils/exception-filters/object-value.exception-filter';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -19,6 +20,11 @@ import { PostgreSQLModule } from './subdomains/planning/contexts/objectives-and-
     PostgreSQLModule,
   ],
   controllers: [ReachController, ProjectController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: ObjectValueExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}

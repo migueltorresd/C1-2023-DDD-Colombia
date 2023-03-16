@@ -2,7 +2,13 @@ import { DefinitionOfTheProjectDomainEntity } from 'src/subdomains/planning/cont
 import { Column, Entity, OneToMany } from 'typeorm';
 import { ProjectPostgresEntity } from './project-postgres.entity';
 import { ReachPostgresEntity } from './reach-postgres.entity';
-
+/**
+ *  esta clase es la que se encarga de definir la entidad de la base de datos
+ *
+ * @export
+ * @class DefinitionOfTheProjectPostgresEntity
+ * @extends {DefinitionOfTheProjectDomainEntity}
+ */
 @Entity('definition_of_the_project', { schema: 'public' })
 export class DefinitionOfTheProjectPostgresEntity extends DefinitionOfTheProjectDomainEntity {
   @Column('uuid', {

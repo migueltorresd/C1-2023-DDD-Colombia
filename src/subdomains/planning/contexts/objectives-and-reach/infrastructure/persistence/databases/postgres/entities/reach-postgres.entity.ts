@@ -2,6 +2,13 @@ import { ReachDomainEntity } from 'src/subdomains/planning/contexts/objectives-a
 import { Column, Entity, Index, ManyToOne } from 'typeorm';
 import { DefinitionOfTheProjectPostgresEntity } from './definition-of-the-project-postgres.entity';
 
+/**
+ * esta clase es la que se encarga de definir la entidad de la base de datos
+ *
+ * @export
+ * @class ReachPostgresEntity
+ * @extends {ReachDomainEntity}
+ */
 @Index('reach_primary_key', ['definitionId'], { unique: true })
 @Entity('reach', { schema: 'public' })
 export class ReachPostgresEntity extends ReachDomainEntity {

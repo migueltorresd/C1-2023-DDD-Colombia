@@ -23,9 +23,9 @@ export class BudgetObjectValue extends ValueObjectBase<number> {
    * @memberof BudgetObjectValue // extiende de ValueObjectBase<number> para que solo acepte valores number
    */
   private isPositiveNumber(): void {
-    if (isPositiveNumber(this.value)) {
+    if (!isPositiveNumber(this.value)) {
       this.setError({
-        field: 'name',
+        field: 'bugdet',
         message: 'esta casilla no puede estar vacia',
       } as IErrorValueObject);
     }

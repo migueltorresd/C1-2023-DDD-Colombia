@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { IProjectDomainService } from 'src/subdomains/planning/contexts/objectives-and-reach/domain/services/proyect.domain-service';
+import { DefinitionOfTheProjectPostgresEntity } from '../entities/definition-of-the-project-postgres.entity';
 import { ProjectPostgresEntity } from '../entities/project-postgres.entity';
 import { ProjectRepository } from '../repositories/project.reposity';
 @Injectable()
@@ -18,6 +19,7 @@ export class ProjectPostgresService
       name,
       budget,
       stateApprove,
+      definitionOfTheProject: new DefinitionOfTheProjectPostgresEntity(),
     });
   }
   editName(projectId: string, name: string): Promise<ProjectPostgresEntity> {
