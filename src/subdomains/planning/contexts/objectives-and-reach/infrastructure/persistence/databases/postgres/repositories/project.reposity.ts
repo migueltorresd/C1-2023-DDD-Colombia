@@ -1,19 +1,27 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ProjectEntity } from '../entities/project.entity';
+import { ProjectPostgresEntity } from '../entities/project-postgres.entity';
 import { IBase } from './interfaces/base.interface';
 
-export class ProjectRepository implements IBase<ProjectEntity> {
+export class ProjectRepository implements IBase<ProjectPostgresEntity> {
   constructor(
-    @InjectRepository(ProjectEntity)
-    private projectRepository: Repository<ProjectEntity>,
+    @InjectRepository(ProjectPostgresEntity)
+    private projectRepository: Repository<ProjectPostgresEntity>,
   ) {}
+  async findOneById(id: string): Promise<ProjectPostgresEntity> {
+    const data = await this.projectRepository.findOneBy({ projectId: id });
+    if (data) return data;
+    throw new Error('Proyecto no encontrado');
+  }
 
-  async create(entity: ProjectEntity): Promise<ProjectEntity> {
+  async create(entity: ProjectPostgresEntity): Promise<ProjectPostgresEntity> {
     return this.projectRepository.save(entity);
   }
 
-  async update(id: string, entity: ProjectEntity): Promise<ProjectEntity> {
+  async update(
+    id: string,
+    entity: ProjectPostgresEntity,
+  ): Promise<ProjectPostgresEntity> {
     const data = await this.projectRepository.findOneBy({ projectId: id });
     if (data) {
       const newEntity = {
@@ -35,13 +43,7 @@ export class ProjectRepository implements IBase<ProjectEntity> {
     throw new Error('Proyecto no encontrado');
   }
 
-  async findAll(): Promise<ProjectEntity[]> {
+  async findAll(): Promise<ProjectPostgresEntity[]> {
     return this.projectRepository.find();
-  }
-
-  async findOneByUsuarioId(id: string): Promise<ProjectEntity> {
-    const data = await this.projectRepository.findOneBy({ projectId: id });
-    if (data) return data;
-    throw new Error('Proyecto no encontrado');
   }
 }

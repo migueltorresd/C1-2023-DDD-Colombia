@@ -1,47 +1,55 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ReachEntity } from '../entities/reach.entity';
+import { ReachPostgresEntity } from '../entities/reach-postgres.entity';
 import { IBase } from './interfaces/base.interface';
 
-export class ReachRepository implements IBase<ReachEntity> {
+export class ReachPostgresRepository implements IBase<ReachPostgresEntity> {
   constructor(
-    @InjectRepository(ReachEntity)
-    private reachRepository: Repository<ReachEntity>,
+    @InjectRepository(ReachPostgresEntity)
+    private reachPostgresRepository: Repository<ReachPostgresEntity>,
   ) {}
-
-  async create(entity: ReachEntity): Promise<ReachEntity> {
-    return this.reachRepository.save(entity);
+  async findOneById(id: string): Promise<ReachPostgresEntity> {
+    const data = await this.reachPostgresRepository.findOneBy({
+      definitionId: id,
+    });
+    if (data) return data;
+    throw new Error('Alcance no encontrado');
   }
 
-  async update(id: string, entity: ReachEntity): Promise<ReachEntity> {
-    const data = await this.reachRepository.findOneBy({ definitionId: id });
+  async create(entity: ReachPostgresEntity): Promise<ReachPostgresEntity> {
+    return this.reachPostgresRepository.save(entity);
+  }
+
+  async update(
+    id: string,
+    entity: ReachPostgresEntity,
+  ): Promise<ReachPostgresEntity> {
+    const data = await this.reachPostgresRepository.findOneBy({
+      definitionId: id,
+    });
     if (data) {
       const newEntity = {
         ...data,
         ...entity,
         reachId: id,
       };
-      return this.reachRepository.save(newEntity);
+      return this.reachPostgresRepository.save(newEntity);
     }
     throw new Error('Alcance no encontrado');
   }
 
   async delete(id: string): Promise<boolean> {
-    const data = await this.reachRepository.findOneBy({ definitionId: id });
+    const data = await this.reachPostgresRepository.findOneBy({
+      definitionId: id,
+    });
     if (data) {
-      await this.reachRepository.remove(data);
+      await this.reachPostgresRepository.remove(data);
       return true;
     }
     throw new Error('Alcance no encontrado');
   }
 
-  async findAll(): Promise<ReachEntity[]> {
-    return this.reachRepository.find();
-  }
-
-  async findOneByUsuarioId(id: string): Promise<ReachEntity> {
-    const data = await this.reachRepository.findOneBy({ definitionId: id });
-    if (data) return data;
-    throw new Error('Alcance no encontrado');
+  async findAll(): Promise<ReachPostgresEntity[]> {
+    return this.reachPostgresRepository.find();
   }
 }

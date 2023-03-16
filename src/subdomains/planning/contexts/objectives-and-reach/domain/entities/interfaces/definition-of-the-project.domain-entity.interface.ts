@@ -15,8 +15,8 @@ export interface IDefinitionOfTheProjectDomainInterface {
   definitionId?: string | DefinitionProjectIdValueObject;
   description?: string | DescriptionObjectValue;
   stateApprove?: boolean | StateApproveObjectValue;
-  dateEnd?: Date | DateEndObjectValue;
-  dateStart?: Date | DateStartObjectValue;
+  dateEnd?: Date | DateEndObjectValue | number;
+  dateStart?: Date | DateStartObjectValue | number;
   reachs?: IProjectDomainInterface[];
   projects?: IProjectDomainInterface[];
 }

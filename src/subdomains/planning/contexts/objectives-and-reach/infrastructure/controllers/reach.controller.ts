@@ -1,17 +1,19 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ReachEntity } from '../persistence/databases/postgres/entities/reach.entity';
-import { ReachService } from '../persistence/databases/postgres/services/reach.service';
+import { ReachPostgresEntity } from '../persistence/databases/postgres/entities/reach-postgres.entity';
+import { ReachPostgresService } from '../persistence/databases/postgres/services/reach-postgres.service';
 
 @Controller('reach')
 export class ReachController {
   constructor(
     private readonly configService: ConfigService,
-    private readonly reachService: ReachService,
+    private readonly reachService: ReachPostgresService,
   ) {}
 
   @Post('create')
-  createReach(@Body() reach: ReachEntity): Promise<ReachEntity> {
+  createReach(
+    @Body() reach: ReachPostgresEntity,
+  ): Promise<ReachPostgresEntity> {
     return this.reachService.createReach(
       reach.definitionId,
       reach.definition,
@@ -21,21 +23,27 @@ export class ReachController {
   }
 
   @Post('edit-definition')
-  editDefinition(@Body() reach: ReachEntity): Promise<ReachEntity> {
+  editDefinition(
+    @Body() reach: ReachPostgresEntity,
+  ): Promise<ReachPostgresEntity> {
     return this.reachService.editDefinition(
       reach.definitionId,
       reach.definition,
     );
   }
   @Post('edit-prioritize')
-  editPrioritize(@Body() reach: ReachEntity): Promise<ReachEntity> {
+  editPrioritize(
+    @Body() reach: ReachPostgresEntity,
+  ): Promise<ReachPostgresEntity> {
     return this.reachService.editPrioritize(
       reach.definitionId,
       reach.prioritize,
     );
   }
   @Post('edit-state-definition')
-  editStateDefinition(@Body() reach: ReachEntity): Promise<ReachEntity> {
+  editStateDefinition(
+    @Body() reach: ReachPostgresEntity,
+  ): Promise<ReachPostgresEntity> {
     return this.reachService.editStateDefinition(
       reach.definitionId,
       reach.stateDefinition,

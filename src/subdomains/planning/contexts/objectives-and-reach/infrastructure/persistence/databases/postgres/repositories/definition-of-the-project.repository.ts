@@ -1,26 +1,26 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { DefinitionOfTheProjectEntity } from '../entities/definition-of-the-project.entity';
+import { DefinitionOfTheProjectPostgresEntity } from '../entities/definition-of-the-project-postgres.entity';
 import { IBase } from './interfaces/base.interface';
 
 export class DefinitionOfTheProjectRepository
-  implements IBase<DefinitionOfTheProjectEntity>
+  implements IBase<DefinitionOfTheProjectPostgresEntity>
 {
   constructor(
-    @InjectRepository(DefinitionOfTheProjectEntity)
-    private definitionOfTheProjectRepository: Repository<DefinitionOfTheProjectEntity>,
+    @InjectRepository(DefinitionOfTheProjectPostgresEntity)
+    private definitionOfTheProjectRepository: Repository<DefinitionOfTheProjectPostgresEntity>,
   ) {}
 
   async create(
-    entity: DefinitionOfTheProjectEntity,
-  ): Promise<DefinitionOfTheProjectEntity> {
+    entity: DefinitionOfTheProjectPostgresEntity,
+  ): Promise<DefinitionOfTheProjectPostgresEntity> {
     return this.definitionOfTheProjectRepository.save(entity);
   }
 
   async update(
     id: string,
-    entity: DefinitionOfTheProjectEntity,
-  ): Promise<DefinitionOfTheProjectEntity> {
+    entity: DefinitionOfTheProjectPostgresEntity,
+  ): Promise<DefinitionOfTheProjectPostgresEntity> {
     const data = await this.definitionOfTheProjectRepository.findOneBy({
       definitionId: id,
     });
@@ -46,13 +46,11 @@ export class DefinitionOfTheProjectRepository
     throw new Error('Definición del proyecto no encontrado');
   }
 
-  async findAll(): Promise<DefinitionOfTheProjectEntity[]> {
+  async findAll(): Promise<DefinitionOfTheProjectPostgresEntity[]> {
     return this.definitionOfTheProjectRepository.find();
   }
 
-  async findOneByDefinitionId(
-    id: string,
-  ): Promise<DefinitionOfTheProjectEntity> {
+  async findOneById(id: string): Promise<DefinitionOfTheProjectPostgresEntity> {
     const data = await this.definitionOfTheProjectRepository.findOneBy({
       definitionId: id,
     });
