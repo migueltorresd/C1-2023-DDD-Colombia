@@ -1,6 +1,13 @@
 import { IsDate, IsString } from 'class-validator';
 import { ICreateProjecCommand } from '../../../domain/interfaces/commands/create-project.command';
 
+/**
+ * este comando es el encargado de recibir los datos del proyecto
+ *
+ * @export
+ * @class CreateProjectCommand
+ * @implements {ICreateProjecCommand} // esta interface representa el comando de creación de un proyecto
+ */
 export class CreateProjectCommand implements ICreateProjecCommand {
   @IsString({ message: 'El id del proyecto es requerido' })
   definitionId: string;

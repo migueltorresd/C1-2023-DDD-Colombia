@@ -5,6 +5,7 @@
  * @return {boolean} // retorna true si es booleano
  */
 export const IsState = (value: any): boolean => {
+  console.log(value);
   if (typeof value === 'boolean') {
     return true;
   }

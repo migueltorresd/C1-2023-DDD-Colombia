@@ -382,20 +382,16 @@ export class DefinitionOfTheProjectAggregate
    * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
    * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
-  getProjectById(
+  async getProjectById(
     projectId: string,
-    name: string,
-    budget: number,
-    stateApprove: boolean,
   ): Promise<ProjectDomainEntity> {
-    return GetProjectByIdHelper(
+    const project = await GetProjectByIdHelper(
       projectId,
-      name,
-      budget,
-      stateApprove,
       this.projectObtainedEventPublisher,
       this.projectService,
     );
+    return project;
+  }
   }
   // DefinitionOfTheProjectAggregate ------------------
   /**

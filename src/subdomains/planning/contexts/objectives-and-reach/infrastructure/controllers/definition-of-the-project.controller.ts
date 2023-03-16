@@ -26,6 +26,7 @@ export class DefinitionOfTheProjectController {
    */
   @Post()
   async create(@Body() command: CreateProjectCommand) {
+    console.log(command);
     const useCase = new CreateProjectUseCase(
       this.definitionOfTheProjectService,
       this.definitionOfTheProjectPublisher,

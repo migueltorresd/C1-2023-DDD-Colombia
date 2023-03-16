@@ -17,7 +17,7 @@ export class ProjectDomainEntity implements IProjectDomainInterface {
   projectId?: string | ProjectIdValueObject;
   name?: string | NameObjectValue;
   budget?: number | BudgetObjectValue;
-  StateApprove?: boolean | StateApproveObjectValue;
+  stateApprove?: boolean | StateApproveObjectValue;
   definitionOfTheProject?: DefinitionOfTheProjectDomainEntity;
   /**
    * se crea una instancia de ProjectDomainEntity. // se crea una instancia de ProjectDomainEntity
@@ -28,6 +28,6 @@ export class ProjectDomainEntity implements IProjectDomainInterface {
     if (data?.projectId) this.projectId = data.projectId;
     if (data?.name) this.name = data.name;
     if (data?.budget) this.budget = data.budget;
-    if (data?.StateApprove) this.StateApprove = data.StateApprove;
+    if (data?.stateApprove) this.stateApprove = data.stateApprove;
   }
 }

@@ -4,6 +4,8 @@ import {
   ValueObjectException,
 } from '@sofka';
 import { DefinitionOfTheProjectAggregate } from '../../../domain/aggregates/definition-of-the-project/definition-of-the-project.aggregate';
+import { ProjectDomainEntity } from '../../../domain/entities/project.domain-entity';
+import { ReachDomainEntity } from '../../../domain/entities/reach.domain-entity';
 import { RegistedDefinitionOfTheProjectEventPublisher } from '../../../domain/events/publishers/definition-of-the-project/registed-definition-of-the-project.event-publisher';
 import { ICreateProjecCommand } from '../../../domain/interfaces/commands/create-project.command';
 import { ICreateProjectResponse } from '../../../domain/interfaces/responses/project-created.response';
@@ -140,15 +142,31 @@ export class CreateProjectUseCase
         this.getErrors(),
       );
     }
+    const projectsMap = project.map((element) => {
+      return new ProjectDomainEntity({
+        projectId: element.projectId.valueOf(),
+        name: element.name.valueOf(),
+        budget: element.budget.valueOf(),
+        stateApprove: element.stateApprove.valueOf(),
+      });
+    });
+    const reachMap = reach.map((element) => {
+      return new ReachDomainEntity({
+        reachId: element.reachId.valueOf(),
+        definition: element.definition.valueOf(),
+        prioritize: element.prioritize.valueOf(),
+        stateDefinition: element.stateDefinition.valueOf(),
+      });
+    });
     //  se llama al agregado y se le pasa los value object y se espera la respuesta
     const respuesta = await this.projectAggregate.registerDefinitionProject({
-      definitionId,
-      dateStart,
-      dateEnd,
-      stateApprove: state,
-      description,
-      projects: project,
-      reachs: reach,
+      definitionId: definitionId.valueOf(),
+      dateStart: dateStart.valueOf(),
+      dateEnd: dateEnd.valueOf(),
+      stateApprove: state.valueOf(),
+      description: description.valueOf(),
+      projects: projectsMap,
+      reachs: reachMap,
     });
     return {
       succes: true,

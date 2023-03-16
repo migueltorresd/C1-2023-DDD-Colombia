@@ -6,7 +6,4 @@
  */
 export interface IGetProjectCommand {
   projectId: string;
-  name: string;
-  budget: number;
-  stateApprove: boolean;
 }

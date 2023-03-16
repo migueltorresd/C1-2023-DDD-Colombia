@@ -15,20 +15,12 @@ import { IProjectDomainService } from '../../../../../services/proyect.domain-se
  */
 export const GetProjectByIdHelper = async (
   projectId: string,
-  name: string,
-  budget: number,
-  stateApprove: boolean,
   event: ProjectObtainedEventPublisher,
-  service?: IProjectDomainService,
+  service: IProjectDomainService,
 ): Promise<ProjectDomainEntity> => {
   if (!event) throw new Error('El evento no está definido');
   if (!service) throw new Error(' El servicio no está definido');
-  event.response = await service.getProjectById(
-    projectId,
-    name,
-    budget,
-    stateApprove,
-  );
+  event.response = await service.getProjectById(projectId);
   event.publish();
   return event.response;
 };

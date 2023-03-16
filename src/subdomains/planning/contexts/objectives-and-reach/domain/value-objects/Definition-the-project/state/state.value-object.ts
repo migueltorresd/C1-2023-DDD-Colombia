@@ -9,7 +9,7 @@ import { StateValueobjectBase } from '../../../../../../../../shared/domain/valu
  */
 export class StateApproveObjectValue extends StateValueobjectBase {
   field(): string {
-    return 'estado de la aprobacion';
+    return 'estado del proyecto';
   }
   constructor(value: boolean) {
     super(value);

@@ -36,7 +36,7 @@ export abstract class StateValueobjectBase extends ValueObjectBase<boolean> {
   }
 
   private isState(): void {
-    if (IsState(this.value)) {
+    if (!IsState(this.value)) {
       this.setError({
         field: this.field(),
         message: `el estado ${this.field()} no es valido`,

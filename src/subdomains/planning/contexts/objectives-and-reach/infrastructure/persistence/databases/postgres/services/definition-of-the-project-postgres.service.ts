@@ -1,7 +1,8 @@
+import { Injectable } from '@nestjs/common';
 import { IDefinitionOfTheProjectDomainService } from 'src/subdomains/planning/contexts/objectives-and-reach/domain/services/definition-of-the-project.domain-service';
 import { DefinitionOfTheProjectPostgresEntity } from '../entities/definition-of-the-project-postgres.entity';
 import { DefinitionOfTheProjectRepository } from '../repositories/definition-of-the-project.repository';
-
+@Injectable()
 export class DefinitionOfTheProjectPostgresService
   implements
     IDefinitionOfTheProjectDomainService<DefinitionOfTheProjectPostgresEntity>

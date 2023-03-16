@@ -41,26 +41,14 @@ export class GetProjectUseCase
    * Metodo para ejecutar el caso de uso
    *
    * @param {IGetProjectCommand} command // comando para obtener un proyecto
-   * @return {*}  {Promise<IGetProjectResponse>} // respuesta del caso de uso
+   * @return {Promise<IGetProjectResponse>} // respuesta del caso de uso
    * @memberof GetProjectUseCase // se implementa para poder usar el metodo execute
    */
   async execute(command: IGetProjectCommand): Promise<IGetProjectResponse> {
     const projectId = new ProjectIdValueObject(command.projectId);
-    const name = new NameObjectValue(command.name);
-    const budget = new BudgetObjectValue(command.budget);
-    const stateApprove = new StateApproveObjectValue(command.stateApprove);
-    // se recopilan los errores de los value objects
+    
     if (projectId.hasErrors() === true) {
-      this.setErrors(projectId.getErrors());
-    }
-    if (name.hasErrors() === true) {
-      this.setErrors(name.getErrors());
-    }
-    if (budget.hasErrors() === true) {
-      this.setErrors(budget.getErrors());
-    }
-    if (stateApprove.hasErrors() === true) {
-      this.setErrors(stateApprove.getErrors());
+      this.setErrors(projectId.getErrors())
     }
     // se valida si hay errores en los value objects
     if (this.hasErrors() === true) {
@@ -72,9 +60,6 @@ export class GetProjectUseCase
 
     const respuesta = await this.projectAggregate.getProjectById(
       projectId.value,
-      name.value,
-      budget.value,
-      stateApprove.value,
     );
     return {
       succes: true,

@@ -14,6 +14,6 @@ export interface IProjectDomainInterface {
   projectId?: string | ProjectIdValueObject;
   name?: string | NameObjectValue;
   budget?: number | BudgetObjectValue;
-  StateApprove?: boolean | StateApproveObjectValue;
+  stateApprove?: boolean | StateApproveObjectValue;
   definitionOfTheProject?: IDefinitionOfTheProjectDomainInterface;
 }
