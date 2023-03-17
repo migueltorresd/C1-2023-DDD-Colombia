@@ -3,9 +3,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { DefinitionOfTheProjectController } from './controllers/definition-of-the-project.controller';
 import { ProjectController } from './controllers/project-postgres.controller';
 import { MessagingModule } from './messaging/messaging.module';
-import { ProjectRepository } from './persistence/databases/postgres/repositories/project.reposity';
 import { PersistenceModule } from './persistence/persistence.module';
-import { ProjectService } from './persistence/services/project.service';
 import { ObjectValueExceptionFilter } from './utils/exception-filters/object-value.exception-filter';
 
 @Module({

@@ -50,7 +50,7 @@ export class CreateProjectUseCase
    * se crea la función execute que recibe el comando y retorna la respuesta
    *
    * @param {ICreateProjecCommand} command
-   * @return {*}  {Promise<ICreateProjectResponse>}
+   * @return {Promise<ICreateProjectResponse>}
    * @memberof CreateProjectUseCase
    */
   async execute(

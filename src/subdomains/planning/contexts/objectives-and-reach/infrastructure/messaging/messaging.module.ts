@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { ProjectObtainedObtainedPublisher } from './publisher/definition-of-the-project-obtained-publishe';
+import { DefinitionOfTheProjectObtainPublisher } from './publisher/definition-of-the-project-obtained-publishe';
+import { ProjectDescriptionEditedPublisher } from './publisher/project-description-edited-publisher';
 import { ProjectObtainedPublisher } from './publisher/project-obtained-publisher';
 import { RegistedDefinitionOfTheProjectPublisher } from './publisher/registed-definition-of-the-project.publisher';
 
@@ -23,12 +24,14 @@ import { RegistedDefinitionOfTheProjectPublisher } from './publisher/registed-de
   providers: [
     RegistedDefinitionOfTheProjectPublisher,
     ProjectObtainedPublisher,
-    ProjectObtainedObtainedPublisher,
+    DefinitionOfTheProjectObtainPublisher,
+    ProjectDescriptionEditedPublisher,
   ],
   exports: [
     RegistedDefinitionOfTheProjectPublisher,
     ProjectObtainedPublisher,
-    ProjectObtainedObtainedPublisher,
+    DefinitionOfTheProjectObtainPublisher,
+    ProjectDescriptionEditedPublisher,
   ],
 })
 export class MessagingModule {}

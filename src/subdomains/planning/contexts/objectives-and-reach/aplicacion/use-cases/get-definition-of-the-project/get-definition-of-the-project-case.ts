@@ -28,7 +28,8 @@ export class GetDefinitionOfTheProjectCase
     super();
     this.projectAggregate = new DefinitionOfTheProjectAggregate({
       definitionoftheprojectService,
-      projectObtainedEventPublisher,
+      definitionOfTheProjectObtainedEventPublisher:
+        projectObtainedEventPublisher,
     });
   }
 
