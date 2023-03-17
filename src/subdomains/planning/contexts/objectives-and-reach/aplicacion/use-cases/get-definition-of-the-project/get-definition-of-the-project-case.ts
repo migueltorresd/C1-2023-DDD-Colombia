@@ -11,6 +11,14 @@ import { IDefinitionOfTheProjectDomainService } from '../../../domain/services/d
 import { DefinitionProjectIdValueObject } from '../../../domain/value-objects/Definition-the-project/definition-project-id/definition-project-id.value-object';
 import { ProjectIdValueObject } from '../../../domain/value-objects/proyect/project-id/project-id.value-object';
 
+/**
+ * caso de uso para obtener la definicion del proyecto
+ *
+ * @export
+ * @class GetDefinitionOfTheProjectCase
+ * @extends {ValueObjectErrorHandler} // ValueObjectErrorHandler es una clase que permite manejar errores de value objects
+ * @implements {IUseCase<IGetDefinitionOfTheProjectCommand, IGetDefinitionOfTheProjectResponse>} // IUseCase es una interfaz que permite manejar casos de uso
+ */
 export class GetDefinitionOfTheProjectCase
   extends ValueObjectErrorHandler
   implements
@@ -33,6 +41,13 @@ export class GetDefinitionOfTheProjectCase
     });
   }
 
+  /**
+   * ejecuta el caso de uso
+   *
+   * @param {IGetDefinitionOfTheProjectCommand} command // comando para obtener la definicion del proyecto
+   * @return {Promise<IGetDefinitionOfTheProjectResponse>} // respuesta del caso de uso
+   * @memberof GetDefinitionOfTheProjectCase // metodo que ejecuta el caso de uso
+   */
   async execute(
     command: IGetDefinitionOfTheProjectCommand,
   ): Promise<IGetDefinitionOfTheProjectResponse> {

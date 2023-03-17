@@ -13,6 +13,14 @@ import { IEditProjectDescriptionResponse } from '../../../domain/interfaces/resp
 import { IDefinitionOfTheProjectDomainService } from '../../../domain/services/definition-of-the-project.domain-service';
 import { DescriptionObjectValue } from '../../../domain/value-objects/Definition-the-project/description/description.value-object';
 
+/**
+ * 
+ *
+ * @export
+ * @class ProjectDescriptionEditUseCase 
+ * @extends {ValueObjectErrorHandler} // ValueObjectErrorHandler es una clase que permite manejar errores de value objects
+ * @implements {IUseCase<IEditProjectDescriptionCommand, IEditProjectDescriptionResponse>} // IUseCase es una interfaz que permite manejar casos de uso
+ */
 export class ProjectDescriptionEditUseCase
   extends ValueObjectErrorHandler
   implements
@@ -31,6 +39,13 @@ export class ProjectDescriptionEditUseCase
     });
   }
 
+  /**
+   * ejecuta el caso de uso
+   *
+   * @param {IEditProjectDescriptionCommand} command // comando para editar la descripcion del proyecto
+   * @return {Promise<IEditProjectDescriptionResponse>} // respuesta del caso de uso
+   * @memberof ProjectDescriptionEditUseCase // metodo que ejecuta el caso de uso
+   */
   async execute(
     command: IEditProjectDescriptionCommand,
   ): Promise<IEditProjectDescriptionResponse> {

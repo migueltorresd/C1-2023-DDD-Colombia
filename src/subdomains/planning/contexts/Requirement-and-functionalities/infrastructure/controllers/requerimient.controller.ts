@@ -16,14 +16,15 @@ import { IncomingMessage } from 'http';
 @Controller()
 export class RequerimientController {
   @EventPattern('planning.RegistedDefinitionOfTheProjectEventPublisher')
-  definitionsProject(@Payload() data: any, @Ctx() context: KafkaContext) {
-    console.log('aqui esta la sub');
-    console.log(data, context);
-  }
-
-  @EventPattern('planning.RegistedDefinitionOfTheProjectEventPublisher')
-  getCreatedItem(@Payload() data: any, @Ctx() context: KafkaContext) {
-    console.log(data, context, 'Created Item');
+  definitionsProject(@Payload() data: any, @Ctx() context: any) {
+    console.log(
+      '-------------------------definitionsProject--------------------------',
+    );
+    console.log('data', data);
+    console.log('contex', context);
+    console.log(
+      '-------------------------definitionsProject--------------------------',
+    );
   }
 
   @EventPattern('planning.ProjectObtainedEventPublisher')
@@ -31,22 +32,34 @@ export class RequerimientController {
     @Payload() data: IncomingMessage,
     @Ctx() context: KafkaContext,
   ) {
+    console.log(
+      '-------------------------obtainedProject--------------------------',
+    );
     console.log(data, context);
+    console.log(
+      '-------------------------obtainedProject--------------------------',
+    );
   }
 
-  @EventPattern('planning.DefinitionOfTheProjectObtainEventPublisher')
-  obtenerDefinicionProyecto(
-    @Payload() data: IncomingMessage,
-    @Ctx() context: KafkaContext,
-  ) {
+  @EventPattern('planning.DefinitionOfTheProjectObtainedEventPublisher')
+  obtenerDefinicionProyecto(@Payload() data: any, @Ctx() context: any) {
+    console.log(
+      '-------------------------obtenerDefinicionProyecto-------------------------',
+    );
     console.log(data, context);
+    console.log(
+      '-------------------------obtenerDefinicionProyecto--------------------------',
+    );
   }
 
-  @EventPattern('planning.ProjectDescriptionEditedEventPublisher')
-  descriptionEdited(
-    @Payload() data: IncomingMessage,
-    @Ctx() context: KafkaContext,
-  ) {
+  @EventPattern('panning.project-description-edited')
+  descriptionEdited(@Payload() data: any, @Ctx() context: any) {
+    console.log(
+      '------------------------- descriptionEdited--------------------------',
+    );
     console.log(data, context);
+    console.log(
+      '------------------------- descriptionEdited--------------------------',
+    );
   }
 }
