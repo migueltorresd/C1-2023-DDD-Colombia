@@ -3,7 +3,6 @@ import { NameObjectValue } from '../value-objects/proyect/name/name.value-object
 import { ProjectIdValueObject } from '../value-objects/proyect/project-id/project-id.value-object';
 import { StateApproveObjectValue } from '../value-objects/proyect/state-approve/state-approve.value-object';
 import { DefinitionOfTheProjectDomainEntity } from './definition-of-the-project.domain-entity';
-import { IDefinitionOfTheProjectDomainInterface } from './interfaces/definition-of-the-project.domain-entity.interface';
 import { IProjectDomainInterface } from './interfaces/project.domain-entity.interface';
 
 /**

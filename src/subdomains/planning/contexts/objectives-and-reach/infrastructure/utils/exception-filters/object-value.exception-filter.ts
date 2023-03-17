@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { ValueObjectException } from '@sofka';
 import { Response } from 'express';
-
+/**
  * este controlador es el encargado de recibir las peticiones http
  *
  * @export
