@@ -1,9 +1,8 @@
-import { Body, Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ParseUUIDPipe } from '@nestjs/common/pipes';
 import { GetProjectUseCase } from '../../aplicacion/use-cases/get-project/get-project.use-case';
 import { ProjectObtainedPublisher } from '../messaging/publisher/project-obtained-publisher';
 import { ProjectService } from '../persistence/services/project.service';
-import { GetProjectCommand } from '../utils/commands/get-project.command';
 
 @Controller('project')
 export class ProjectController {

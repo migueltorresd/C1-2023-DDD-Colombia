@@ -10,6 +10,19 @@ export class DefinitionOfTheProjectPostgresService
   constructor(
     private readonly definitionOfTheProjectRepository: DefinitionOfTheProjectRepository,
   ) {}
+  getDefinitionOfTheProject(
+    definitionId: string,
+  ): Promise<DefinitionOfTheProjectPostgresEntity> {
+    return this.definitionOfTheProjectRepository.findOneById(definitionId);
+  }
+  createDescripcionProject(
+    definitionId: string,
+    description: string,
+  ): Promise<DefinitionOfTheProjectPostgresEntity> {
+    const data = new DefinitionOfTheProjectPostgresEntity();
+    data.description = description;
+    return this.definitionOfTheProjectRepository.update(definitionId, data);
+  }
   addDateEnd(
     definitionId: string,
     dateEnd: Date,

@@ -25,6 +25,7 @@ import { createDescripcionProjectHelper } from './helpers/definition-of-the-proj
 import { EditDateEndHelper } from './helpers/definition-of-the-project-helpers/edit-date-end/edit-date-end.helper';
 import { EditDescripcionProjectHelper } from './helpers/definition-of-the-project-helpers/edit-descripcion-project/edit-descripcion-project.helper';
 import { EditStateApproveProjectHelper } from './helpers/definition-of-the-project-helpers/edit-state-approve-project/edit-state-approve-project.helper';
+import { GetDefinitionOfTheProjectHelper } from './helpers/definition-of-the-project-helpers/get-definition-of-the-project/get-definition-of-the-project.Helper';
 import { RegisterDefinitionProjectHelpers } from './helpers/definition-of-the-project-helpers/register-definition-project/register-definition-project.helpers';
 import { createProjectHelper } from './helpers/project-helpers/create-project/create-project.helper';
 import { EditBudgetHelper } from './helpers/project-helpers/edit-budget/edit-budget.helper';
@@ -382,9 +383,7 @@ export class DefinitionOfTheProjectAggregate
    * @return {Promise<ProjectDomainEntity>} // retorna la entidad de dominio del proyecto
    * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
-  async getProjectById(
-    projectId: string,
-  ): Promise<ProjectDomainEntity> {
+  async getProjectById(projectId: string): Promise<ProjectDomainEntity> {
     const project = await GetProjectByIdHelper(
       projectId,
       this.projectObtainedEventPublisher,
@@ -392,7 +391,7 @@ export class DefinitionOfTheProjectAggregate
     );
     return project;
   }
-  }
+
   // DefinitionOfTheProjectAggregate ------------------
   /**
    * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función createDescripcionProjectHelper
@@ -402,6 +401,7 @@ export class DefinitionOfTheProjectAggregate
    * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
    * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
    */
+
   createDescripcionProject(
     definitionId: string,
     description: string,
@@ -509,5 +509,15 @@ export class DefinitionOfTheProjectAggregate
       this.registedDefinitionOfTheProjectEventPublisher,
       this.definitionoftheprojectService,
     );
+  }
+  async getDefinitionOfTheProject(
+    definitionId: string,
+  ): Promise<DefinitionOfTheProjectDomainEntity> {
+    const definition = await GetDefinitionOfTheProjectHelper(
+      definitionId,
+      this.definitionOfTheProjectObtainedEventPublisher,
+      this.definitionoftheprojectService,
+    );
+    return definition;
   }
 }

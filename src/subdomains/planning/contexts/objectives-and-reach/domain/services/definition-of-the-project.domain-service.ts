@@ -17,10 +17,12 @@ export interface IDefinitionOfTheProjectDomainService<
    * @param {string} description // descripción del proyecto
    * @return {Promise<Entity>} // retorna una entidad de dominio de definición del proyecto
    * @memberof IDefinitionOfTheProjectDomainService // este metodo es el que se usa para crear la descripción del proyecto
+   */
   createDescripcionProject(
     definitionId: string,
     description: string,
   ): Promise<Entity>;
+
   /**
    * Edita una descripción del proyecto
    *
@@ -33,6 +35,7 @@ export interface IDefinitionOfTheProjectDomainService<
     definitionId: string,
     description: string,
   ): Promise<Entity>;
+
   /**
    * edita el estado de aprobación del proyecto
    *
@@ -54,6 +57,7 @@ export interface IDefinitionOfTheProjectDomainService<
    * @return {Promise<Entity>} // retorna una entidad de dominio de definición del proyecto
    * @memberof IDefinitionOfTheProjectDomainService // este metodo es el que se usa para agregar la fecha de inicio del proyecto
    */
+
   addDateEnd(definitionId: string, dateEnd: Date): Promise<Entity>;
 
   /**
@@ -65,6 +69,7 @@ export interface IDefinitionOfTheProjectDomainService<
    * @memberof IDefinitionOfTheProjectDomainService // este metodo es el que se usa para editar la fecha de inicio del proyecto
    */
   editDateEnd(definitionId: string, dateEnd: Date): Promise<Entity>;
+
   /**
    * registra una definicion del proyecto
    *
@@ -79,4 +84,6 @@ export interface IDefinitionOfTheProjectDomainService<
   registerDefinitionProject(
     entity: DefinitionOfTheProjectDomainEntity,
   ): Promise<Entity>;
+
+  getDefinitionOfTheProject(definitionId: string): Promise<Entity>;
 }

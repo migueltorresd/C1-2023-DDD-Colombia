@@ -46,9 +46,9 @@ export class GetProjectUseCase
    */
   async execute(command: IGetProjectCommand): Promise<IGetProjectResponse> {
     const projectId = new ProjectIdValueObject(command.projectId);
-    
+
     if (projectId.hasErrors() === true) {
-      this.setErrors(projectId.getErrors())
+      this.setErrors(projectId.getErrors());
     }
     // se valida si hay errores en los value objects
     if (this.hasErrors() === true) {
