@@ -37,6 +37,15 @@ import { EditDefinitionHelper } from './helpers/reach-helpers/edit-definition/ed
 import { EditPrioritizeHelper } from './helpers/reach-helpers/edit-prioritize/edit-prioritize.helper';
 import { EditStateDefinitionHelper } from './helpers/reach-helpers/edit-state-definition/edit-state-definition.helper';
 
+/**
+ * Esta clase es el agregado de la definición del proyecto
+ *
+ * @export
+ * @class DefinitionOfTheProjectAggregate
+ * @implements {IReachDomainService} // esta interfaz es para poder usar los servicios de reach
+ * @implements {IProjectDomainService} // esta interfaz es para poder usar los servicios de project
+ * @implements {IDefinitionOfTheProjectDomainService} // esta interfaz es para poder usar los servicios de definition of the project
+ */
 export class DefinitionOfTheProjectAggregate
   implements
     IReachDomainService,
@@ -510,6 +519,13 @@ export class DefinitionOfTheProjectAggregate
       this.definitionoftheprojectService,
     );
   }
+  /**
+   * validar que el evento no sea nulo y que el servicio no sea nulo gracias a la ayuda de la función EditDateStartHelper
+   *
+   * @param {string} definitionId // id de la definición del proyecto
+   * @return {Promise<DefinitionOfTheProjectDomainEntity>} // retorna la entidad de dominio de la definición del proyecto
+   * @memberof DefinitionOfTheProjectAggregate // agregado de definición del proyecto
+   */
   async getDefinitionOfTheProject(
     definitionId: string,
   ): Promise<DefinitionOfTheProjectDomainEntity> {

@@ -50,6 +50,13 @@ export class DefinitionOfTheProjectController {
     return await useCase.execute(command);
   }
 
+  /**
+   * este metodo es el encargado de recibir la peticion http
+   *
+   * @param {string} command// se le pasa el comando
+   * @return // retorna la respuesta
+   * @memberof DefinitionOfTheProjectController // retorna la respuesta
+   */
   @Get(':id')
   async getDefinitionOfTheProject(@Param('id', ParseUUIDPipe) command: string) {
     const useCase = new GetDefinitionOfTheProjectCase(
@@ -59,6 +66,14 @@ export class DefinitionOfTheProjectController {
     return await useCase.execute({ definitionId: command });
   }
 
+  /**
+   * este metodo es el encargado de recibir la peticion http
+   *
+   * @param {string} definitionId // se le pasa el comando
+   * @param {EditDefinitionOfTheProjectDescriptionCommand} command // se le pasa el comando
+   * @return  {Promise<IEditProjectDescriptionResponse>} // retorna la respuesta
+   * @memberof DefinitionOfTheProjectController
+   */
   @Put(':id')
   async updateDefinitionOfTheProjectDescription(
     @Param('id', ParseUUIDPipe) definitionId: string,

@@ -20,7 +20,8 @@
     "test:watch": "set SCOPE=test & jest --watch",
     "test:cov": "set SCOPE=test & jest --coverage",
     "test:debug": "set SCOPE=test & node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "set SCOPE=test & jest --config ./test/jest-e2e.json"
+    "test:e2e": "set SCOPE=test & jest --config ./test/jest-e2e.json",
+    "docs": "typedoc --entryPointStrategy expand ./src --out docs"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

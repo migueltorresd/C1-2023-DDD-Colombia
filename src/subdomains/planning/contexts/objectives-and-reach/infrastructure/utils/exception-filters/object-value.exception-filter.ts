@@ -7,6 +7,12 @@ import {
 import { ValueObjectException } from '@sofka';
 import { Response } from 'express';
 
+ * este controlador es el encargado de recibir las peticiones http
+ *
+ * @export
+ * @class ObjectValueExceptionFilter
+ * @implements {ExceptionFilter<ValueObjectException>}
+ */
 @Catch(ValueObjectException)
 export class ObjectValueExceptionFilter
   implements ExceptionFilter<ValueObjectException>
